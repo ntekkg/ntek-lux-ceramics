@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUX Ceramics — Extended Edition 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAF9;--surf:#FFFFFF;--prim:#1C1917;--sec:#44403C;
+  --acc:#B45309;--acc2:#D97706;--muted:#F5F5F4;--border:#E7E5E4;
+  --txt2:#78716C;--f-d:'Bodoni Moda',Georgia,serif;--f-b:'Jost',system-ui,sans-serif;
+  --ease:cubic-bezier(0.25,0.46,0.45,0.94);--r:3px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-b);background:var(--bg);color:var(--prim);min-height:100dvh;-webkit-font-smoothing:antialiased}
+
+/* HEADER */
+.hdr{background:var(--prim);padding:52px 48px 44px;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:56px 56px;pointer-events:none}
+.hdr-inner{max-width:1440px;margin:0 auto;position:relative;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:40px}
+.hdr-left{display:flex;flex-direction:column;gap:18px}
+.logo-wrap{display:flex;align-items:center;gap:14px}
+.logo-img{height:120px;width:auto;object-fit:contain;mix-blend-mode:screen}
+.logo-lux{height:80px;mix-blend-mode:screen}
+.logo-sep{width:1px;height:42px;background:rgba(255,255,255,.18)}
+.lux-wm{font-family:var(--f-d);font-size:26px;font-weight:500;color:rgba(255,255,255,.8);letter-spacing:.18em}
+.hdr-eye{font-size:10px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--acc2)}
+.hdr-brand{text-align:center}
+.v2-pill{display:inline-flex;align-items:center;background:rgba(180,83,9,.18);
+  border:1px solid rgba(180,83,9,.35);color:var(--acc2);font-size:9px;font-weight:600;
+  letter-spacing:.25em;text-transform:uppercase;padding:4px 12px;border-radius:2px;margin-bottom:14px}
+.brand-t{font-family:var(--f-d);font-size:clamp(42px,5vw,78px);font-weight:500;color:#FFF;letter-spacing:.06em;line-height:1}
+.gold-rule{width:44px;height:1px;background:linear-gradient(90deg,transparent,var(--acc2),transparent);margin:14px auto}
+.brand-sub{font-size:11px;font-weight:400;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.hdr-right{display:flex;flex-direction:column;align-items:flex-end;gap:20px}
+.hdr-stats{display:grid;grid-template-columns:auto auto;gap:4px 14px;align-items:baseline;justify-content:end}
+.stat-n{font-family:var(--f-d);font-size:24px;font-weight:500;color:#FFF;line-height:1;text-align:right}
+.stat-l{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);white-space:nowrap}
+.hdr-tag{font-size:12px;color:rgba(255,255,255,.3);font-weight:300;letter-spacing:.04em;max-width:175px;text-align:right;line-height:1.65}
+
+/* FILTER BAR */
+.fbar{position:sticky;top:0;z-index:200;background:rgba(250,250,249,.98);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-top:2px solid var(--prim);border-bottom:1px solid rgba(0,0,0,.14);
+  box-shadow:0 4px 16px rgba(0,0,0,.09)}
+.fbar-in{max-width:1440px;margin:0 auto;padding:10px 48px;min-height:64px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.flbl{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--txt2);white-space:nowrap}
+.tabs{display:flex;background:var(--muted);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;flex-shrink:0}
+.tab{padding:7px 14px;font-family:var(--f-b);font-size:11px;font-weight:500;letter-spacing:.04em;
+  background:none;border:none;border-right:1px solid var(--border);cursor:pointer;
+  color:var(--txt2);transition:background .18s,color .18s;white-space:nowrap;display:flex;align-items:center;gap:5px}
+.tab:last-child{border-right:none}
+.tab.on{background:var(--prim);color:#FFF}
+.tab:hover:not(.on){background:var(--border);color:var(--prim)}
+.edot{display:inline-block;width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.fbar-sep{width:1px;height:22px;background:var(--border);flex-shrink:0}
+.srch{flex:0 0 280px;min-width:180px;max-width:340px;position:relative;margin-left:auto}
+.srch svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:14px;height:14px;
+  stroke:var(--txt2);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.srch input{width:100%;padding:8px 14px 8px 33px;font-family:var(--f-b);font-size:13px;
+  color:var(--prim);background:var(--surf);border:1.5px solid rgba(0,0,0,.18);border-radius:var(--r);
+  outline:none;transition:border-color .2s,box-shadow .2s}
+.srch input:focus{border-color:var(--prim);box-shadow:0 0 0 3px rgba(28,25,23,.08)}
+.srch input::placeholder{color:var(--txt2)}
+.rcnt{font-size:12px;font-weight:500;color:var(--sec);white-space:nowrap;letter-spacing:.04em}
+
+/* GALLERY */
+.gallery{max-width:1440px;margin:0 auto;padding:56px 48px 96px}
+.sg{margin-bottom:72px}
+.sg:last-child{margin-bottom:0}
+.sg-hdr{display:flex;align-items:baseline;gap:14px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sg-t{font-family:var(--f-d);font-size:23px;font-weight:500;color:var(--prim);letter-spacing:.04em}
+.sg-u{font-size:13px;color:var(--txt2);letter-spacing:.06em}
+.sg-c{margin-left:auto;font-size:12px;color:var(--txt2);letter-spacing:.1em}
+.sg-excl .sg-hdr{border-bottom-color:rgba(180,83,9,.35)}
+.sg-excl .sg-t{color:var(--acc)}
+
+/* TILE GRID */
+.tgrid{display:grid;gap:14px}
+.g30{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.g60{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.g120{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.g-excl{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+
+/* TILE CARD */
+.tc{cursor:pointer;border-radius:var(--r);overflow:hidden;background:var(--surf);
+  border:1px solid var(--border);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.tc:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(0,0,0,.13)}
+.tc:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.tc.excl{border-color:rgba(180,83,9,.18)}
+.tc.excl:hover{box-shadow:0 10px 36px rgba(180,83,9,.14)}
+.ti-wrap{position:relative;overflow:hidden;background:#ddd9d4}
+.ar30{aspect-ratio:1/1.7}.ar60{aspect-ratio:1/1}.ar120{aspect-ratio:1/1.55}.ar-excl{aspect-ratio:16/9}
+.ti{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
+.tc:hover .ti{transform:scale(1.07)}
+.tov{position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(12,10,9,.86) 0%,rgba(12,10,9,.25) 48%,transparent 75%);
+  opacity:0;transition:opacity .32s ease;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:16px}
+.tc:hover .tov{opacity:1}
+.ov-code{font-size:9px;font-weight:500;letter-spacing:.2em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:4px}
+.ov-name{font-family:var(--f-d);font-size:17px;font-weight:500;color:#FFF;letter-spacing:.04em;line-height:1.15}
+.ov-tags{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
+.ot{font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:2px}
+.ot-c{background:rgba(255,255,255,.14);color:rgba(255,255,255,.8)}
+.ot-s{background:rgba(180,83,9,.65);color:rgba(255,255,255,.9)}
+.ot-f{background:rgba(255,255,255,.07);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.14)}
+.tlbl{padding:11px 13px 13px}
+.lbl-n{font-family:var(--f-d);font-size:14px;font-weight:500;color:var(--prim);
+  letter-spacing:.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lbl-tags{display:flex;gap:5px;margin-top:6px;align-items:center;flex-wrap:wrap}
+.lt{font-size:9px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px}
+.lt-c{background:var(--muted);color:var(--sec)}
+.lt-s{background:var(--prim);color:#FFF}
+.lt-f{background:transparent;border:1px solid var(--border);color:var(--txt2)}
+.lt-excl{background:rgba(180,83,9,.1);color:var(--acc);border:1px solid rgba(180,83,9,.2)}
+
+/* EXCLUSIVE CARD BADGES */
+.excl-tag{position:absolute;top:10px;left:10px;background:rgba(12,10,9,.72);
+  backdrop-filter:blur(4px);color:rgba(255,255,255,.82);font-size:8px;font-weight:600;
+  letter-spacing:.2em;padding:3px 8px;border-radius:2px;text-transform:uppercase;pointer-events:none}
+.cat24-tag{position:absolute;top:10px;right:10px;
+  background:linear-gradient(135deg,var(--acc),var(--acc2));
+  color:#fff;font-size:8px;font-weight:700;letter-spacing:.18em;padding:3px 8px;
+  border-radius:2px;text-transform:uppercase;pointer-events:none}
+.var-ct{position:absolute;bottom:10px;right:10px;background:rgba(12,10,9,.65);
+  color:rgba(255,255,255,.75);font-size:8px;font-weight:600;letter-spacing:.1em;
+  padding:2px 7px;border-radius:2px;pointer-events:none}
+.eff-pill{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:2px}
+.ep-concrete{background:#f1f5f9;color:#475569;border:1px solid #cbd5e1}
+.ep-stone{background:#fef3c7;color:#92400e;border:1px solid #fde68a}
+.ep-metal{background:#f1f5f9;color:#334155;border:1px solid #94a3b8}
+.ep-marble{background:#fff7ed;color:#b45309;border:1px solid #fed7aa}
+.ep-wood{background:#fdf0e0;color:#7c4a1a;border:1px solid #d4a574}
+
+/* EMPTY */
+.empty{grid-column:1/-1;padding:80px 0;text-align:center}
+.empty p{font-family:var(--f-d);font-size:20px;font-style:italic;color:var(--txt2)}
+
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;
+  padding:24px;background:rgba(12,10,9,.92);opacity:0;pointer-events:none;transition:opacity .28s ease}
+.lb.open{opacity:1;pointer-events:all}
+.lb-box{display:flex;max-width:1080px;width:100%;max-height:90vh;border-radius:6px;overflow:hidden;
+  transform:scale(.97) translateY(8px);transition:transform .32s var(--ease)}
+.lb.open .lb-box{transform:scale(1) translateY(0)}
+.lb-img-pane{flex:1;background:#0a0908;display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:300px;position:relative}
+.lb-img{max-width:100%;max-height:88vh;object-fit:contain;display:block}
+.lb-itiles{position:absolute;bottom:0;left:0;right:0;padding:48px 18px 16px;
+  background:linear-gradient(transparent,rgba(12,10,9,.72));
+  display:flex;flex-wrap:wrap;gap:7px;align-items:flex-end;pointer-events:none}
+.lb-itiles:empty{display:none}
+.lb-itile{font-family:var(--f-d);font-style:italic;font-size:12px;color:#fff;letter-spacing:.02em;
+  background:rgba(12,10,9,.48);border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  padding:5px 12px;border-radius:2px;cursor:pointer;pointer-events:all;
+  transition:background .18s,border-color .18s;white-space:nowrap}
+.lb-itile:hover{background:rgba(180,83,9,.65);border-color:rgba(217,119,6,.5)}
+.lb-info{width:284px;flex-shrink:0;background:#FFF;display:flex;flex-direction:column;overflow-y:auto}
+.lb-top{padding:36px 26px 0;flex:1}
+.lb-eye{font-size:9px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--txt2)}
+.lb-col{font-family:var(--f-d);font-size:28px;font-weight:500;color:var(--prim);
+  letter-spacing:.02em;line-height:1.1;margin-top:8px}
+.lb-cname{font-family:var(--f-d);font-size:13px;font-style:italic;color:var(--txt2);margin-top:3px}
+.lb-rule{width:34px;height:2px;background:var(--acc);margin:18px 0}
+.lb-specs{display:flex;flex-direction:column}
+.sp{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border)}
+.sp:last-child{border-bottom:none}
+.sp-k{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.15em;color:var(--txt2)}
+.sp-v{font-size:13px;font-weight:500;color:var(--prim);text-align:right}
+.lb-vars{display:flex;gap:6px;padding:14px 26px;flex-wrap:wrap;
+  border-top:1px solid var(--border);background:var(--muted);flex-shrink:0}
+.lb-vars:empty{display:none!important}
+.lv-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0;cursor:pointer}
+.lv{width:54px;height:38px;object-fit:cover;border-radius:2px;
+  border:1.5px solid transparent;opacity:.6;transition:all .2s;flex-shrink:0}
+.lv.on{border-color:var(--acc);opacity:1}
+.lv-wrap:hover .lv:not(.on){opacity:.9}
+.lv-name{font-size:8px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--txt2);text-align:center;max-width:54px;white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;line-height:1}
+.lbx-sect{padding:14px 26px 16px;border-top:1px solid var(--border);background:var(--muted);flex-shrink:0}
+.lbx-hdr{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--txt2);margin-bottom:9px}
+.lbx-chips{display:flex;flex-wrap:wrap;gap:5px}
+.lbx-chip{font-family:var(--f-d);font-style:italic;font-size:11px;color:var(--prim);
+  background:#fff;border:1px solid var(--border);border-radius:2px;padding:4px 10px;
+  cursor:pointer;transition:background .18s,color .18s,border-color .18s;white-space:nowrap}
+.lbx-chip:hover{background:var(--prim);color:#fff;border-color:var(--prim)}
+.lbx-renders{display:flex;flex-wrap:wrap;gap:6px}
+.lbx-rthumb{width:72px;height:50px;object-fit:cover;border-radius:2px;cursor:pointer;
+  border:1.5px solid transparent;opacity:.7;transition:all .2s}
+.lbx-rthumb:hover{opacity:1;border-color:var(--acc)}
+.lb-bot{padding:20px 26px;border-top:1px solid var(--border);background:var(--muted)}
+.lb-bname{font-family:var(--f-d);font-size:13px;font-weight:500;color:var(--prim);letter-spacing:.08em}
+.lb-orig{font-size:10px;letter-spacing:.15em;color:var(--txt2);text-transform:uppercase;margin-top:3px}
+
+/* LB CONTROLS */
+.lb-x{position:absolute;top:18px;right:18px;width:44px;height:44px;display:flex;
+  align-items:center;justify-content:center;background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.15);border-radius:50%;cursor:pointer;transition:background .2s}
+.lb-x:hover{background:rgba(255,255,255,.2)}
+.lb-x svg,.lb-nav svg{stroke:#FFF;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;
+  display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);border-radius:50%;cursor:pointer;transition:background .2s}
+.lb-nav:hover{background:rgba(255,255,255,.18)}
+#lbPrev{left:18px}#lbNext{right:302px}
+
+/* FOOTER */
+/* CONTACT SECTION */
+.csect{background:var(--prim);padding:80px 48px}
+.csect-in{max-width:1440px;margin:0 auto}
+.csect-eye{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.csect-eye::before{content:'';width:36px;height:1px;background:var(--acc);display:block}
+.csect-eye span{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);font-weight:600;font-family:var(--f-b)}
+.csect-head{font-family:var(--f-d);font-size:clamp(32px,4vw,54px);font-weight:500;color:#fff;margin:0 0 52px;letter-spacing:.02em}
+.ccards{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(255,255,255,.08);border-radius:3px;overflow:hidden}
+.ccard{background:rgba(255,255,255,.03);padding:36px 28px;display:flex;flex-direction:column;border-right:1px solid rgba(255,255,255,.07);text-decoration:none;transition:background .2s}
+.ccard:last-child{border-right:none}
+.ccard:hover{background:rgba(255,255,255,.06)}
+.ccard-ico{display:block;width:40px;height:40px;margin-bottom:22px;stroke:rgba(255,255,255,.45);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;object-fit:contain}
+svg.ccard-ico{width:24px;height:24px;margin-bottom:38px}
+img.ccard-ico{margin-top:-10px;margin-bottom:32px}
+.ccard-lbl{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);font-weight:600;font-family:var(--f-b);margin-bottom:10px}
+.ccard-val{font-family:var(--f-d);font-size:clamp(15px,1.8vw,20px);font-weight:500;color:#fff;margin-bottom:6px;line-height:1.25}
+.ccard-sub{font-size:12px;color:rgba(255,255,255,.35);margin-bottom:28px;flex:1;line-height:1.55}
+.ccard-btn{display:inline-flex;align-items:center;padding:10px 20px;border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.65);font-family:var(--f-b);font-size:10px;letter-spacing:.14em;text-transform:uppercase;transition:all .2s;align-self:flex-start;border-radius:2px}
+.ccard:hover .ccard-btn{background:var(--acc);border-color:var(--acc);color:#fff}
+/* FOOTER */
+.ftr{background:#111110;padding:56px 48px 32px}
+.ftr-in{max-width:1440px;margin:0 auto}
+.ftr-top{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:56px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:28px;align-items:center}
+.ftr-top>div{display:flex;flex-direction:column;align-items:center;text-align:center}
+.ftr-logo{height:90px;mix-blend-mode:screen;opacity:1}
+.ccard-ico.brand{fill:rgba(255,255,255,.45)!important;stroke:none!important;stroke-width:0;opacity:1}
+.ftr-desc{font-size:14px;color:rgba(255,255,255,.38);line-height:1.8;max-width:300px;margin:20px 0 18px;text-align:center}
+.ftr-lnk{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--acc);text-decoration:none;letter-spacing:.04em;font-family:var(--f-b);transition:opacity .2s}
+.ftr-lnk:hover{opacity:.75}
+.ftr-lnk svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ftr-col-hd{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);font-weight:600;font-family:var(--f-b);margin-bottom:18px;text-align:center;width:100%}
+.ftr-links{display:flex;flex-direction:column;gap:12px;align-items:center;width:100%}
+.ftr-links a,.ftr-links span{font-size:14px;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s;display:block}
+.ftr-links a:hover{color:rgba(255,255,255,.85)}
+.ftr-links .ftr-divider{height:1px;background:rgba(255,255,255,.07);margin:8px 0}
+.ftr-bot{display:flex;align-items:center;justify-content:space-between}
+.ftr-copy{font-size:12px;color:rgba(255,255,255,.22);letter-spacing:.04em}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hdr{padding:36px 28px 32px}.hdr-inner{grid-template-columns:1fr;text-align:center}
+  .hdr-left,.hdr-right{align-items:center}.hdr-right{flex-direction:row;justify-content:center}
+  .hdr-tag{text-align:center}
+  .fbar-in{padding:10px 24px}.gallery{padding:40px 24px 72px}
+  .ftr{padding:36px 24px 24px}.csect{padding:56px 24px}
+  .ccards{grid-template-columns:repeat(2,1fr)}
+  .ccard:nth-child(2){border-right:none}.ccard:nth-child(3){border-top:1px solid rgba(255,255,255,.07)}
+  .ftr-top{grid-template-columns:1fr;gap:40px}
+}
+@media(max-width:768px){
+  .hdr{padding:28px 16px 24px}.fbar-in{padding:10px 16px}
+  .flbl,.fbar-sep{display:none}.srch{max-width:100%;flex:1 0 100%}
+  .gallery{padding:28px 14px 60px}.tgrid{gap:9px}
+  .g30,.g60,.g120{grid-template-columns:repeat(2,1fr)}
+  .g-excl{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  .lb-box{flex-direction:column;max-height:95vh}.lb-info{width:100%;max-height:240px}
+  #lbNext{right:72px}
+  .ccards{grid-template-columns:1fr}
+  .ccard{border-right:none;border-top:1px solid rgba(255,255,255,.07)}
+  .ccard:first-child{border-top:none}
+  .ftr-bot{flex-direction:column;gap:8px;text-align:center}
+}
+@media(max-width:480px){.brand-t{font-size:36px}.tab{padding:6px 10px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){.tc,.ti,.tov,.lb,.lb-box{transition:none}}
+
+/* CERTIFICATES */
+.cert-badge-btn{display:inline-flex;align-items:center;gap:7px;background:rgba(180,83,9,.12);
+  border:1px solid rgba(180,83,9,.3);color:var(--acc2);font-family:var(--f-b);font-size:9px;
+  font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:5px 12px;border-radius:2px;
+  cursor:pointer;transition:background .2s;margin-top:6px;width:fit-content}
+.cert-badge-btn:hover{background:rgba(180,83,9,.2)}
+.cert-modal{position:fixed;inset:0;z-index:1100;display:flex;align-items:center;justify-content:center;
+  padding:24px;background:rgba(12,10,9,.92);opacity:0;pointer-events:none;transition:opacity .28s ease}
+.cert-modal.open{opacity:1;pointer-events:all}
+.cert-box{width:100%;max-width:880px;height:82vh;background:#FFF;border-radius:6px;
+  display:flex;flex-direction:column;overflow:hidden;
+  transform:scale(.97) translateY(8px);transition:transform .32s var(--ease)}
+.cert-modal.open .cert-box{transform:scale(1) translateY(0)}
+.cert-hdr{display:flex;align-items:center;padding:18px 24px;border-bottom:1px solid var(--border);
+  flex-shrink:0;background:var(--prim)}
+.cert-title{font-family:var(--f-d);font-size:17px;font-weight:500;color:#FFF;letter-spacing:.04em}
+.cert-sub{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-top:3px}
+.cert-close{margin-left:auto;width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:50%;
+  cursor:pointer;transition:background .2s}
+.cert-close:hover{background:rgba(255,255,255,.2)}
+.cert-close svg{stroke:#FFF;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cert-tabs-bar{display:flex;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--muted)}
+.ctab{padding:10px 18px;font-family:var(--f-b);font-size:11px;font-weight:500;letter-spacing:.05em;
+  background:none;border:none;border-right:1px solid var(--border);cursor:pointer;
+  color:var(--txt2);transition:background .15s,color .15s;white-space:nowrap}
+.ctab:last-child{border-right:none}
+.ctab.on{background:#FFF;color:var(--prim);box-shadow:inset 0 -2px 0 var(--acc)}
+.ctab:hover:not(.on){background:var(--border);color:var(--prim)}
+.cert-viewer{flex:1;overflow:hidden;background:#e5e2de}
+.cert-viewer iframe{width:100%;height:100%;border:none;display:block}
+/* LANG SWITCHER */
+.hdr-contact-btn{display:inline-flex;align-items:center;padding:7px 18px;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.85);font-family:var(--f-b);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background .15s,border-color .15s,color .15s;white-space:nowrap}
+.hdr-contact-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.6);color:#fff}
+.lang-sw{display:flex;gap:3px;align-items:center}
+.lang-btn{background:none;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.42);
+  font-family:var(--f-b);font-size:10px;font-weight:600;letter-spacing:.14em;
+  padding:5px 11px;cursor:pointer;transition:all .15s;border-radius:2px}
+.lang-btn.on{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.45)}
+.lang-btn:hover:not(.on){color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.32)}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-left">
+      <div class="logo-wrap">
+        <img src="img/ntekk.png" alt="ntek" class="logo-img">
+        <div class="logo-sep"></div>
+        <img src="img/lux-logo.png" alt="LUX Ceramics" class="logo-img logo-lux">
+      </div>
+      <div class="hdr-eye" data-i18n="hdr_eye">Производитель керамогранита · Узбекистан</div>
+      <button class="cert-badge-btn" onclick="openCerts()" aria-label="View quality certificates">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        <span data-i18n="cert_btn">Сертифицированный материал · 4 сертификата</span>
+      </button>
+    </div>
+    <div class="hdr-brand">
+      <div class="v2-pill" data-i18n="v2_pill">Расширенное издание 2026</div>
+      <h1 class="brand-t">LUX Ceramics</h1>
+      <div class="gold-rule"></div>
+      <p class="brand-sub" data-i18n="brand_sub">Производство и эксклюзивные коллекции</p>
+    </div>
+    <div class="hdr-right">
+      <div style="display:flex;align-items:center;gap:16px">
+        <a class="hdr-contact-btn" href="#site-footer" data-i18n="hdr_contact">Связаться с нами</a>
+        <div class="lang-sw">
+          <button class="lang-btn on" data-lang="ru" onclick="setLang('ru')">РУ</button>
+          <button class="lang-btn" data-lang="ky" onclick="setLang('ky')">КЫР</button>
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">АНГ</button>
+        </div>
+      </div>
+      <div class="hdr-stats">
+        <div class="stat-n" id="prodCount">—</div>
+        <div class="stat-l" data-i18n="stat_prod">Плитки производства</div>
+        <div class="stat-n" id="exclCount">—</div>
+        <div class="stat-l" data-i18n="stat_excl">Эксклюзивные коллекции</div>
+        <div class="stat-n">3</div>
+        <div class="stat-l" data-i18n="stat_fmt">Форматы</div>
+      </div>
+      <p class="hdr-tag" data-i18n="hdr_tag">Премиальный керамогранит для архитектуры и дизайна интерьера</p>
+    </div>
+  </div>
+</header>
+
+<div class="fbar">
+  <div class="fbar-in">
+    <span class="flbl" data-i18n="flbl">Вид</span>
+    <div class="tabs" id="srcTabs" role="tablist">
+      <button class="tab on" data-src="prod" role="tab" data-i18n="tab_prod">Коллекции</button>
+      <button class="tab" data-src="excl" role="tab" data-i18n="tab_excl">Визуализация</button>
+    </div>
+    <div class="fbar-sep"></div>
+    <div class="tabs" id="szTabs" role="tablist">
+      <button class="tab" data-sz="60x120" role="tab">60×120</button>
+      <button class="tab" data-sz="60x60" role="tab">60×60</button>
+      <button class="tab" data-sz="30x60" role="tab">30×60</button>
+      <button class="tab on" data-sz="all" role="tab" data-i18n="sz_all">Все размеры</button>
+    </div>
+    <div class="fbar-sep"></div>
+    <div class="tabs" id="effTabs" role="tablist">
+      <button class="tab on" data-eff="all" role="tab" data-i18n="eff_all">Все</button>
+      <button class="tab" data-eff="wood" role="tab" data-i18n="eff_wood">Дерево</button>
+      <button class="tab" data-eff="marble" role="tab" data-i18n="eff_marble">Мрамор</button>
+      <button class="tab" data-eff="other" role="tab" data-i18n="eff_other">Цемент</button>
+      <button class="tab" data-eff="stone" role="tab" data-i18n="eff_stone">Камень</button>
+      <button class="tab" data-eff="metal" role="tab" data-i18n="eff_metal">Металл</button>
+      <button class="tab" data-eff="decorative" role="tab" data-i18n="eff_decorative">Декор</button>
+    </div>
+    <div class="srch">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" id="si" data-i18n-ph="search_ph" placeholder="Поиск коллекций…" aria-label="Search tiles">
+    </div>
+    <div class="rcnt" id="rc" aria-live="polite"></div>
+  </div>
+</div>
+
+<main class="gallery" id="gallery"></main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Tile detail">
+  <button class="lb-x" id="lbX" aria-label="Close">
+    <svg width="16" height="16" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <button class="lb-nav" id="lbPrev" aria-label="Previous">
+    <svg width="20" height="20" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="lb-nav" id="lbNext" aria-label="Next">
+    <svg width="20" height="20" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="lb-box">
+    <div class="lb-img-pane">
+      <img class="lb-img" id="lbImg" src="" alt="">
+      <div class="lb-itiles" id="lbITiles"></div>
+    </div>
+    <div class="lb-info">
+      <div class="lb-top">
+        <div class="lb-eye" id="lbEye"></div>
+        <div class="lb-col" id="lbCol"></div>
+        <div class="lb-cname" id="lbCn"></div>
+        <div class="lb-rule"></div>
+        <div class="lb-specs" id="lbSpecs"></div>
+      </div>
+      <div class="lb-vars" id="lbVars"></div>
+      <div class="lbx-sect" id="lbXSect" style="display:none"></div>
+      <div class="lb-bot">
+        <div class="lb-bname">LUX Ceramics</div>
+        <div class="lb-orig" data-i18n="lb_orig">Узбекистан · Премиальный керамогранит</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cert-modal" id="certModal" role="dialog" aria-modal="true" aria-label="Quality certificates">
+  <div class="cert-box">
+    <div class="cert-hdr">
+      <div>
+        <div class="cert-title" data-i18n="cert_title">Сертификаты качества</div>
+        <div class="cert-sub" data-i18n="cert_sub2">LUX Ceramics · Сертифицированный керамогранит · Узбекистан</div>
+      </div>
+      <button class="cert-close" id="certX" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cert-tabs-bar">
+      <button class="ctab on" onclick="showCert(0)">Сертификат 2025</button>
+      <button class="ctab" onclick="showCert(1)">RSC Persey LG</button>
+      <button class="ctab" onclick="showCert(2)">RC Venecia LB</button>
+      <button class="ctab" onclick="showCert(3)">Pacific LG</button>
+    </div>
+    <div class="cert-viewer">
+      <iframe id="certFrame" src="" title="Certificate document"></iframe>
+    </div>
+  </div>
+</div>
+
+<section class="csect">
+  <div class="csect-in">
+    <div class="csect-eye"><span data-i18n="csect_eye">Свяжитесь с нами</span></div>
+    <h2 class="csect-head" data-i18n="csect_head">Контакты NTEK</h2>
+    <div class="ccards">
+      <a class="ccard" href="https://wa.me/996556442207" target="_blank" rel="noopener">
+        <img class="ccard-ico" src="img/whatsapp.png" alt="WhatsApp" style="mix-blend-mode:screen;border-radius:0">
+        <div class="ccard-lbl" data-i18n="ccard_wa_lbl">WhatsApp</div>
+        <div class="ccard-val">+996 556 442 207</div>
+        <div class="ccard-sub" data-i18n="ccard_wa_sub">Напишите нам в WhatsApp</div>
+        <span class="ccard-btn" data-i18n="ccard_wa_btn">Написать нам</span>
+      </a>
+      <a class="ccard" href="tel:+996777420000">
+        <svg class="ccard-ico" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.4 19.79 19.79 0 0 1 1.62 4.9 2 2 0 0 1 3.6 2.72h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10.4a16 16 0 0 0 5.71 5.71l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.28 17z"/></svg>
+        <div class="ccard-lbl" data-i18n="ccard_ph_lbl">Телефон</div>
+        <div class="ccard-val">+996 777 420 000</div>
+        <div class="ccard-sub" data-i18n="ccard_ph_sub">Позвоните нам напрямую</div>
+        <span class="ccard-btn" data-i18n="ccard_ph_btn">Позвонить</span>
+      </a>
+      <a class="ccard" href="https://www.instagram.com/ntek.kg?igsh=enpvaXMwNHJwZ3Vr" target="_blank" rel="noopener">
+        <img class="ccard-ico" src="img/instagram.png" alt="Instagram" style="mix-blend-mode:screen;border-radius:0">
+        <div class="ccard-lbl">Instagram</div>
+        <div class="ccard-val">@ntek.kg</div>
+        <div class="ccard-sub" data-i18n="ccard_ig_sub">Проекты и новинки</div>
+        <span class="ccard-btn" data-i18n="ccard_ig_btn">Подписаться</span>
+      </a>
+      <a class="ccard" href="https://2gis.kg/bishkek/search/%D0%98%D1%81%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%20119" target="_blank" rel="noopener">
+        <svg class="ccard-ico" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="ccard-lbl" data-i18n="ccard_adr_lbl">Адрес офиса</div>
+        <div class="ccard-val">Исанова 119</div>
+        <div class="ccard-sub" data-i18n="ccard_adr_sub">Бишкек, Кыргызстан</div>
+        <span class="ccard-btn" data-i18n="ccard_adr_btn">Проложить маршрут</span>
+      </a>
+    </div>
+  </div>
+</section>
+<footer class="ftr" id="site-footer">
+  <div class="ftr-in">
+    <div class="ftr-top">
+      <div>
+        <img src="img/ntekk.png" alt="ntek" class="ftr-logo">
+        <p class="ftr-desc" data-i18n="ftr_desc">NTEK — официальный дистрибьютор LUX Ceramics в Кыргызстане. Премиальный керамогранит для жилых и коммерческих проектов.</p>
+        <a class="ftr-lnk" href="https://luxceramics.uz/" target="_blank" rel="noopener">
+          <span data-i18n="ftr_lnk_txt">Официальный сайт LUX Ceramics</span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div>
+        <div class="ftr-col-hd" data-i18n="ftr_cat_hd">О каталоге</div>
+        <div class="ftr-links">
+          <span data-i18n="ftr_cat_ed">Расширенное издание · 2026</span>
+          <span data-i18n="ftr_cat_mfg">Производство: Узбекистан</span>
+          <span data-i18n="ftr_cat_tech">Технология: Digital Printing</span>
+          <span data-i18n="ftr_cat_mat">Глазурованный керамогранит</span>
+          <span data-i18n="ftr_cat_frost">Морозостойкий · Ректифицированный</span>
+        </div>
+      </div>
+      <div>
+        <div class="ftr-col-hd" data-i18n="ftr_col_hd">Контакты</div>
+        <div class="ftr-links">
+          <a href="https://wa.me/996556442207" target="_blank" rel="noopener" data-i18n="flink_wa">WhatsApp · +996 556 442 207</a>
+          <a href="tel:+996777420000" data-i18n="flink_ph">Телефон · +996 777 420 000</a>
+          <a href="https://www.instagram.com/ntek.kg?igsh=enpvaXMwNHJwZ3Vr" target="_blank" rel="noopener" data-i18n="flink_ig">Instagram · @ntek.kg</a>
+          <a href="https://2gis.kg/bishkek/search/%D0%98%D1%81%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%20119" target="_blank" rel="noopener" data-i18n="flink_addr">Исанова 119, Бишкек — 2GIS</a>
+        </div>
+      </div>
+    </div>
+    <div class="ftr-bot">
+      <div class="ftr-copy" data-i18n="fcopy1">© 2026 NTEK. Все права защищены.</div>
+      <div class="ftr-copy" data-i18n="fcopy2">Каталог LUX Ceramics · Расширенное издание</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── URL helpers ──────────────────────────────────────────────────────────────
+function enc(s){
+  return [...s].map(c=>{
+    const n=c.charCodeAt(0);
+    if(n>127) return encodeURIComponent(c);
+    if(c===' ') return '%20';
+    if(c==='(') return '%28';
+    if(c===')') return '%29';
+    return c;
+  }).join('');
+}
+const DIRS={'30x60':'30x60','60x60':'60x60','60x120':'60x120'};
+const EXCL_BASE='img/exclusive/';
+function prodUrl(size,fn){return 'img/'+DIRS[size]+'/'+enc(fn);}
+function exclUrl(fn){return EXCL_BASE+enc(fn);}
+function photoUrl60x60(fn){return 'img/60x60_2/'+enc(fn);}
+function photoUrl60x120(fn){return 'img/60x120_2/'+enc(fn);}
+
+// ── Color map ─────────────────────────────────────────────────────────────────
+const CMAP={
+  BL:'Black',DG:'Dark Grey',LG:'Light Grey',G:'Grey',BG:'Beige Grey',LB:'Light Beige',
+  W:'White',B:'Beige',BR:'Brown',Y:'Ivory Yellow',IV:'Ivory',R:'Red',CY:'Cyan',
+  GC:'Gold Cream',SUN:'Sun Gold',TAUPE:'Taupe',SILVER:'Silver',GOLD:'Gold',
+  VERO:'Natural White',GREY:'Grey',MILK:'Milk White'
+};
+const CCODES=new Set(Object.keys(CMAP));
+
+function clean(s){
+  s=s.replace(/\.(jpg|jpeg|png)$/i,'');
+  const fm=s.match(/_?[Ff]([1-9])/);const fin=fm?'F'+fm[1]:'';
+  const cm=s.match(/^(\d+)\s+/);const code=cm?cm[1]:'';
+  s=s.replace(/^\d+\s+/,'');
+  s=s.replace(/^R(?:[SCС][CС]?|[CС]?)\s+/i,'');
+  s=s.replace(/[\s_]*копия.*/i,'');
+  s=s.replace(/[\s_]+[Ff]inal\b.*/i,'');
+  s=s.replace(/\s+(?:ALL|HD\.?|BN)\s*$/i,'');
+  for(let i=0;i<4;i++)s=s.replace(/\s*\(\d+\)\s*$/,'');
+  s=s.replace(/\s+\d{2}[\s.]\d{2}[\s.]\d{2,4}\s*$/,'');
+  s=s.replace(/[\s_]+\d{4,}\s*$/,'');
+  s=s.replace(/_/g,' ');
+  s=s.replace(/\s+[Ff]\d?\s*$/,'');
+  s=s.replace(/\s+T\d+\s*$/,'');
+  s=s.replace(/\s*\.\s*$/,'');
+  s=s.replace(/\s*\(гладкий\)\s*/,'');
+  s=s.replace(/\s{2,}/g,' ').trim();
+  s=s.replace(/^R(?:[SCС][CС]?|[CС]?)\s+/i,'');
+  const parts=s.split(/\s+/);
+  let col='',cname='',coll=s;
+  if(parts.length>=2){
+    const last=parts[parts.length-1].replace(/[^A-Za-z]/g,'').toUpperCase();
+    if(CCODES.has(last)){col=last;cname=CMAP[last]||last;coll=parts.slice(0,-1).join(' ');}
+  }
+  coll=coll.split(/\s+/).map(w=>w?w[0].toUpperCase()+w.slice(1).toLowerCase():'').join(' ').trim();
+  return{col,cname,coll,fin,code};
+}
+
+const WOOD_COLLS=['timber','branch','taiga','savanna','sylvana','iris','castano','texas','kiko'];
+const METAL_COLLS=['otochento'];
+const DECORATIVE_COLLS=[
+  'artex','enigma','marci','sigma','rosalind','andromeda','magnetic','weverse',
+  'vavilon','teona','levita','marocco','raftalia'
+];
+const STONE_COLLS=[
+  'temari','admiral','arena','ardesia','arcane','rockford','kreon','gretto',
+  'mirage','rodin','river','somali','monolit','safia',
+  'saga','venetto','urban','anna','divina','tempo','rocks',
+  'maya','andora','viking','ambra','beetle','kvadro','nevo',
+  'everstone','granada','malibu','sparkle','riko','parla','altravera'
+];
+const MARBLE_COLLS=[
+  'calacatta','cremona','venecia','metropolis','trenza',
+  'polsha','vilona','natte','chester','oxide','amsterdam','torri','trendy',
+  'anivar','clay','eternity','infinity','nasti','koin','bico','forest',
+  'glitter','sten','agusta','rezzo','velvet','idris','adelia','aprel',
+  'blend','tanga','magent','anima','almendra','groza','wayne','wizard',
+  'linda','piedra','bellion','alpica','sunny','shell','roma'
+];
+function getEffect(coll){
+  const c=coll.toLowerCase();
+  if(WOOD_COLLS.some(w=>c.startsWith(w)))return'wood';
+  if(MARBLE_COLLS.some(w=>c.startsWith(w)))return'marble';
+  if(METAL_COLLS.some(w=>c.startsWith(w)))return'metal';
+  if(DECORATIVE_COLLS.some(w=>c.startsWith(w)))return'decorative';
+  if(STONE_COLLS.some(w=>c.startsWith(w)))return'stone';
+  return'other';
+}
+
+function parseProd(fn,size){
+  const p=clean(fn);
+  return{fn,size,src:prodUrl(size,fn),...p,effect:getEffect(p.coll),source:'prod'};
+}
+
+// ── Production tile data ──────────────────────────────────────────────────────
+const PROD_RAW={
+  '30x60':[
+    '2117 RC LINDA B_F1.jpg','2183 RSC PERSEY LG F1 (6).jpg','2202 RSC TEMARI BL F1 (5).jpg',
+    '2204 RSC FLORIAN LB F1.jpg','2205 RSC FLORIAN BG F1.jpg','2221 RSC ADMIRAL DG (6).jpg',
+    '2226 RSC MONA LG_F1.jpg','2232 RSC ARENA BG.jpg','2234 RSC RANCHO DG_F1 (8).jpg',
+    '2237 RC OTOCHENTO G_F1.jpg','2303 RSC ARTEX BG (5).jpg','2304 RSC ARTEX G (5).jpg',
+    '2307 RSC Ardesia_BL_F1.jpg','2310 RSC Arcane_BL_F3.jpg','2311 RSC ROCKFORD LG_F1.jpg',
+    '2312 RSC ROCKFORD G_F2.jpg','2313 RSC ROCKFORD BL_F2.jpg','2315 RSC Piedra_BG_F2.jpg',
+    '2316 RSC KREON BL_F1.jpg','2317 RSC KREON_LG_F2.jpg','2319 RC Gretto_G_F2.jpg',
+    '2327 RSC BELLION DG_F1.jpg','2329 RSC MIRAGE BL (8).jpg','2330 RSC MIRAGE LG (8).jpg',
+    '2336 RSC SOMALI BL_F1.jpg','2365 RC ENIGMA BL.jpg','2366 RC MARCI CY.jpg',
+    'R KIKO G_2013.jpg','R URBAN LG_3012.jpg','RC RODIN BL F1 19 02 25.jpg',
+    'RS RIVER DG_4008.jpg','RSC ALONE LB.JPG','RSC CLEVER G F1.jpg',
+    'RSC MONOLIT BG F1.jpg','RSC MONOLIT DG F3.jpg','RSC RIVER LB_4015.jpg',
+    'RС SAFIA GC_1005.jpg'
+  ],
+  '60x60':[
+    '8015 R LAZIO G.jpg','8078 RC VOID G.jpg','8111 RC ALPICA BR_F1.jpg',
+    '8113 RC SAGA G F1.jpg','8254 RC VENETTO G.jpg','8278 RSC SIGMA LG.jpg',
+    '8279 RSC SIGMA BG.jpg','9010 RС TITAN DG.jpg','R URBAN DG.jpg',
+    'RC ANNA BG F1 02 06  25 BN.jpg','RC BRANCH R.jpg','RC CEMENT G_F1_.jpg',
+    'RC Divina BL.jpg','RC Divina DG.jpg','RC Divina LG. f1 27 07 25.jpg',
+    'RC IVORY IV копия (2).jpg','RC ROSALIND G (2).jpg',
+    'RC SOLARIS Y  HD .jpg','RC TEMPO GREY F1 (2).jpg','RC TITAN G.jpg'
+  ],
+  '60x120':[
+    '10006 RC SILVER G.jpg','10008 RC ANIVAR LB.jpg','10009 RC ESTER LB.jpg',
+    '10013 RC CEMENTO LG.jpg','10014 RC CEMENTO DG.jpg','10015 RC POLSHA BL.jpg',
+    '10016 RC MAYA DG.jpg','10017 RC MAYA LG F1 21.03.2023 (2).jpg','10019 RC MILAN G.jpg',
+    '10021 RC ANNA BG F1.jpg','10025 RC ANDORA LB F1.jpg','10032 RC VILONA W F1.jpg',
+    '10033 RC CHESTER BL F1 (2).jpg','10033 RC NATTE BG F1.jpg','10035 RC MONTE G F1.jpg',
+    '10035 RC OXIDE W F1.jpg','10037 RC AMSTERDAM F1 (2).jpg','10038 RC TORRI BL F1 (2).jpg',
+    '10040 RC TRENDY W.jpg','10041 RC MAYA BL F1.jpg','10042 RC URBAN G.jpg',
+    '10047 RC ANIVAR LG F1.jpg','10049 RC ANIVAR BG.jpg','10050 RC CLAY G (3).jpg',
+    '10051 RC CLAY DG (3).jpg','10061 RC VIKING BL F1.jpg','10062 RC IRIS DG.jpg',
+    '10064 RC ETERNITY G F1.jpg','10066 RC AMBRA G  (1) (2).jpg','10067 RC INFINITY W (1).jpg',
+    '10068 RC NASTI LB F1.jpg','10069 RC KOIN G F1.jpg','10071 RC BICO G (1) (2).jpg',
+    '10077 RC FOREST BL F (1) (2).jpg','10081 RC CALACATTA VERO W.jpg',
+    '10090 RC GLITTER DG F1 (2).jpg','10094 RC VAVILON G.jpg',
+    '10097 RC STEN LG (гладкий).jpg',
+    '10098 RC STEN DG.jpg','10098 RSC STEN DG.jpg','10115 RC BEETLE G_F1.jpg',
+    '10117 RC TEONA DG (2).jpg','10156 RC AGUSTA B.jpg','10157 RC SILVER LG.jpg',
+    '10162 RC TIMBER R.jpg','10163 RC VELVET BL  ALL.jpg','10167 RC TIMBER LB.jpg',
+    '10168 RC REZZO G.jpg','10169 RC REZZO LG.jpg','10170 RC REZZO BL.jpg',
+    '10171 RC REZZO BG.jpg','10172 RC REZZO LB.jpg','10183 RSC LEVITA DG .jpg',
+    '10184 RSC LEVITA BG.jpg','10186 RC DESIRE LG (2).jpg','10187 RC DESIRE G F1 (7).jpg',
+    '10188 RC DESIRE DG F1 (10).jpg','10189 RC VELVET LG.jpg','10201 RC PLAZA Y_F2 (4).jpg',
+    '10203 RC MEMORIA BL_Final копия.jpg','10214 RC ARAGON G F1.jpg',
+    '10231 RC CHROME G F2.jpg','10232 RC CHROME IV F2.jpg',
+    '11012 RC KVADRO MILK F4 (2).jpg','11023 RC SILUET BL_T2.jpg','11024 RC INFERNO Y.jpg',
+    '11029 RC SOLARIS LB 11 02 25 HD.jpg','11031 RC IDRIS BL_F2.jpg',
+    '11035 RC NEVO BL (2).jpg','11038 RC RAFTALIA LB (3).jpg','11039 RC RAFTALIA BG (2).jpg',
+    '11040 RC RAFTALIA LG (3).jpg','11041 RC RAFTALIA DG.jpg','11043 RC NEVO BR (2).jpg',
+    '11046 RC TAIGA LB_F1 (3).jpg','11047 RC SAVANNA BR_F2 (3).jpg',
+    '11048 RC SYLVANA Y_F2 (2).jpg','11049 RC MARIANA B_F2 (3).jpg',
+    '11050 RC GLARO LG.jpg','11051 RC SOLARIS Y  HD.jpg',
+    '11078 RC RANCHO LG_F1.jpg','11079 RC RANCHO DG_F2 (2).jpg',
+    'RC ADELIA DG f1 (2).jpg','RC APREL G F1.jpg','RC CALACATTA GOLD (4).jpg',
+    'RC CASTANO BG F1.jpg','RC CREMONA GOLD F1.jpg','RC CREMONA SILVER F1 (2).jpg',
+    'RC CREMONA TAUPE F3 (2).jpg','RC EVERSTONE G.jpg','RC GLARO LB.jpg',
+    'RC GRANADA DG F1 копия (2).jpg',
+    'RC GRANADA LG F1 копия (2).jpg',
+    'RC MALIBU BL (6).jpg','RC MAROCCO SUN.jpg','RC METROPOLIS W (4).jpg',
+    'RC RC BLEND G  F1.jpg','RC TANGA W.jpg','RC TEXAS BR.jpg','RC TRENZA LB.jpg',
+    'RC VENECIA BG F1.jpg','RC VENECIA LB F1.jpg','RC glaro BG.jpg',
+    'RSC ADELIA DG f1.jpg','RSC Magent BG.jpg'
+  ]
+};
+
+// Build production tiles
+const PROD_TILES=[];
+for(const[sz,files]of Object.entries(PROD_RAW)){
+  files.forEach(fn=>PROD_TILES.push(parseProd(fn,sz)));
+}
+// New 60×60 (from "60х60 2" folder)
+['2222 RSC ADMIRAL IV 60 60.jpg','2222 RSC ADMIRAL LG 60 60.jpg','7027 RС MONTE G.jpg',
+ '7029 RC SAFIA BL.jpg','8100 RC BOREAL LG_F5 (2).jpg','8101 RC BOREAL G_F1 29.05 (2).jpg',
+ '8104 RC SUNNY BG F1.jpg','8135 RC PACIFIC G F1.psbTELG.jpg','8163 RC SHELL DG.jpg',
+ '8166 RC DENVER LGY.jpg','8230 RC OTOCHENTO LG (3).jpg','9023 RC ELEGANCE W.jpg',
+ 'RC ANDROMEDA BG (2).jpg','RC ANDROMEDA G (2).jpg','RC CEMENT G.jpg',
+ 'RC MAGNETIC BG (2).jpg','RC MAGNETIC G (2).jpg','RC ROMA B.jpg',
+ 'RC WEVERSE G ANCORA (2).jpg','RС ROCKS G.jpg'
+].forEach(fn=>{
+  const p=clean(fn);
+  const nameOv60={
+    'RC WEVERSE G ANCORA (2).jpg':{coll:'Weverse',cname:'Ancora Grey',col:'G'},
+    '2222 RSC ADMIRAL IV 60 60.jpg':{coll:'Admiral',cname:'Ivory',col:'IV'},
+    '2222 RSC ADMIRAL LG 60 60.jpg':{coll:'Admiral',cname:'Light Grey',col:'LG'},
+  };
+  const ov=nameOv60[fn]||{};
+  const coll=ov.coll||p.coll;
+  PROD_TILES.push({fn,size:'60x60',src:photoUrl60x60(fn),...p,...ov,effect:getEffect(coll),source:'prod'});
+});
+// New 60×120 (from "60x120 2" folder)
+['10010 RC ANIMA W_60x120_F1 копия.jpg','10042 RC URBAN LG.jpg','10065 RC SPARKLE G F1.jpg',
+ '10068 RC ALMENDRA LB (2).jpg','10091 RC PARLA B F1.jpg','10099 RSC STEN BL.jpg',
+ '10101 RSC RIKO G.jpg','10118 RC BRANCH R_F1.jpg','10150 RC GROZA W.jpg',
+ '10151 RC GROZA BL.jpg','10159 RC TIMBER LG.jpg','10160 RC TIMBER DG.jpg',
+ '10161 RC TIMBER BG.jpg','10164 RC EVERSTONE BR.jpg','10173 RC WAYNE BL F1.jpg',
+ '10173 RC WAYNE LG.jpg','10181 RC EVERSTONE LB.jpg','10182 RC EVERSTONE BG.jpg',
+ '10220 RC FEYA LB 120 60 HD 28 10 24 final копия.jpg','10230 RC CHROME LG F1.jpg',
+ '11032 RC IDRIS G_F1.jpg','11033 RC IDRIS LG_F3.jpg','11034 RC IDRIS IV_F3.jpg',
+ '11042 RC NEVO LB (2).jpg','11068 RC CASTANO BR F1.jpg','11070 RC CASTANO LB F1.jpg',
+ 'RC ALTRAVERA DG F1.jpg','RC ALTRAVERA LG F2.jpg','RC CREMONA IVORY F2 (2).jpg',
+ 'RC JUNO Y.jpg','RC MAROCCO MOON.jpg','RC STEN G.jpg',
+ 'RС WIZARD W F1 (2).jpg','solaris bg final.jpg'
+].forEach(fn=>{
+  const p=clean(fn);
+  const nameOv={
+    '10010 RC ANIMA W_60x120_F1 копия.jpg':{coll:'Anima',cname:'White',col:'W'},
+    '10220 RC FEYA LB 120 60 HD 28 10 24 final копия.jpg':{coll:'Feya',cname:'Light Beige',col:'LB'},
+  };
+  const ov=nameOv[fn]||{};
+  const coll=ov.coll||p.coll;
+  PROD_TILES.push({fn,size:'60x120',src:photoUrl60x120(fn),...p,...ov,effect:getEffect(coll),source:'prod'});
+});
+
+// ── Exclusive collection definitions ─────────────────────────────────────────
+const EXCL_DEF=[
+  // CONCRETE
+  {coll:'Apollo',   effect:'marble',varNames:['Light Grey','Grey','Dark Grey'],
+   vars:['APOLLO_var25_0.jpeg','APOLLO_var25_1.jpeg','APOLLO_var25_2.jpeg']},
+  {coll:'Carbon',   effect:'concrete',varNames:['Silver','Oxido','Dark Silver','Anthracite'],
+   vars:['CARBON_var4_0.jpeg','CARBON_var4_1.jpeg','CARBON_var4_2.jpeg','CARBON_var4_3.jpeg']},
+  {coll:'Dexter',   effect:'stone',varNames:['Ivory','Silver','Gold'],
+   vars:['DEXTER_var39_0.jpeg','DEXTER_var39_1.jpeg','DEXTER_var39_2.jpeg']},
+  {coll:'Frost',    effect:'concrete',varNames:['Gold','Silver'],
+   vars:['FROST_var21_0.jpeg','FROST_var21_1.jpeg']},
+  {coll:'Industry', effect:'decorative',varNames:['Grey','Mosaic','Mosaic Black','Mosaic Color','Mosaic Loft'],
+   vars:['INDUSTRY_var72_0.jpeg','INDUSTRY_var72_1.jpeg','INDUSTRY_var72_2.jpeg','INDUSTRY_var72_3.jpeg','INDUSTRY_var73_0.jpeg']},
+  {coll:'Logan',    effect:'concrete',varNames:['Light Grey','Dark Grey','Grey'],
+   vars:['LOGAN_var6_0.jpeg','LOGAN_var6_1.jpeg','LOGAN_var6_2.jpeg']},
+  {coll:'Midnight', effect:'marble',varNames:['Ivory','Silver','Capuccino'],
+   vars:['MIDNIGHT_var70_0.jpeg','MIDNIGHT_var70_1.jpeg','MIDNIGHT_var70_2.jpeg']},
+  {coll:'Rocket',   effect:'marble',varNames:['Light Silver','Silver','Cooper'],
+   vars:['ROCKET_var29_0.jpeg','ROCKET_var29_1.jpeg','ROCKET_var29_2.jpeg']},
+  {coll:'Solido',   effect:'concrete',varNames:['Light Grey','Dark Grey','Grey'],
+   vars:['SOLIDO_var10_0.jpeg','SOLIDO_var10_1.jpeg','SOLIDO_var10_2.jpeg']},
+  {coll:'Stucco',   effect:'concrete',varNames:['Pearl','Dark Silver','Silver'],
+   vars:['STUCCO_var12_0.jpeg','STUCCO_var12_1.jpeg','STUCCO_var12_2.jpeg']},
+  // STONE
+  {coll:'Beli',     effect:'stone',varNames:['Pearl','Silver','Gold','Dark Silver'],
+   vars:['BELI_var56_0.jpeg','BELI_var56_1.jpeg','BELI_var56_2.jpeg','BELI_var56_3.jpeg']},
+  {coll:'Crimson',  effect:'concrete',varNames:['Honey','Grey','Mint'],
+   vars:['CRIMSON_var23_0.jpeg','CRIMSON_var23_1.jpeg','CRIMSON_var23_2.png']},
+  {coll:'Dakar',    effect:'metal',varNames:['Silver','Dark Silver'],
+   vars:['DAKAR_var35_0.jpeg','DAKAR_var35_1.jpeg']},
+  {coll:'Frega',    effect:'marble',varNames:['Ivory','Gold','Chocolate'],
+   vars:['FREGA_var33_0.jpeg','FREGA_var33_1.jpeg','FREGA_var33_2.jpeg']},
+  {coll:'Limestone',effect:'stone',varNames:['Silver','Dark Silver','Gold','Graphite'],
+   vars:['LIMESTONE_var46_0.png','LIMESTONE_var46_1.jpeg','LIMESTONE_var46_2.png','LIMESTONE_var46_3.jpeg']},
+  {coll:'Sierra',   effect:'metal',varNames:['Light','Dark'],
+   vars:['SIERRA_var8_0.jpeg','SIERRA_var8_1.jpeg']},
+  {coll:'Terrano',  effect:'stone',varNames:['Ivory','Silver','Gold'],
+   vars:['TERRANO_var37_0.jpeg','TERRANO_var37_1.jpeg','TERRANO_var37_2.jpeg']},
+  {coll:'Traver',   effect:'marble',varNames:['Ivory','Silver','Gold','Coffe'],
+   vars:['TRAVER_var52_0.jpeg','TRAVER_var52_1.jpeg','TRAVER_var52_2.jpeg','TRAVER_var52_3.jpeg']},
+  // METAL
+  {coll:'Bond',     effect:'stone',varNames:['Ivory','Coffe','Gold','Silver','Graphite'],
+   vars:['BOND_var43_0.jpeg','BOND_var43_1.jpeg','BOND_var43_2.jpeg','BOND_var44_0.jpeg','BOND_var44_1.jpeg']},
+  {coll:'Ferro',    effect:'metal',varNames:['Anthracite','Oxido','Cooper'],
+   vars:['FERRO_var60_0.jpeg','FERRO_var60_1.jpeg','FERRO_var60_2.jpeg']},
+  {coll:'Iron',     effect:'metal',varNames:['Gold','Oxido','Silver','Graphite'],
+   vars:['IRON_var64_0.jpeg','IRON_var64_1.jpeg','IRON_var64_2.jpeg','IRON_var64_3.png']},
+  {coll:'Meta',     effect:'concrete',varNames:['Cotto','Silver','Oxido','Dark Silver'],
+   vars:['META_var58_0.jpeg','META_var58_1.jpeg','META_var58_2.jpeg','META_var58_3.jpeg']},
+  {coll:'Rusted',   effect:'metal',varNames:['Gold','Anthracite','Oxido'],
+   vars:['RUSTED_var62_0.jpeg','RUSTED_var62_1.jpeg','RUSTED_var62_2.jpeg']},
+  {coll:'Vinyl',    effect:'marble',varNames:['Beige','Brown'],
+   vars:['VINYL_var66_0.jpeg','VINYL_var66_1.jpeg']},
+  // MARBLE
+  {coll:'Blossom',  effect:'marble',varNames:['Ice','Flore','Flore Grey','Flore Dark'],
+   vars:['BLOSSOM_var74_0.jpeg','BLOSSOM_var74_1.jpeg','BLOSSOM_var74_2.jpeg','BLOSSOM_var74_3.jpeg']},
+  {coll:'Essence',  effect:'marble',varNames:['Ivory','Silver','Gold'],
+   vars:['ESSENCE_var54_0.jpeg','ESSENCE_var54_1.jpeg','ESSENCE_var54_2.jpeg']},
+  {coll:'Eternal',  effect:'stone',varNames:['Gold','Dark Silver','Silver','Graphite'],
+   vars:['ETERNAL_var41_0.jpeg','ETERNAL_var41_1.jpeg','ETERNAL_var41_2.jpeg','ETERNAL_var41_3.jpeg']},
+  {coll:'Mantua',   effect:'concrete',varNames:['Beige','Light Grey','Grey'],
+   vars:['MANTUA_var19_0.jpeg','MANTUA_var19_1.jpeg','MANTUA_var19_2.jpeg']},
+  {coll:'Prestige', effect:'marble',varNames:['Ivory','Grey','Beige'],
+   vars:['PRESTIGE_var31_0.jpeg','PRESTIGE_var31_1.jpeg','PRESTIGE_var31_2.jpeg']},
+  {coll:'Regal',    effect:'marble',varNames:['Ivory','Silver','Gold','Capuccino'],
+   vars:['REGAL_var68_0.jpeg','REGAL_var68_1.jpeg','REGAL_var68_2.jpeg','REGAL_var68_3.jpeg']},
+  {coll:'Ryan',     effect:'marble',varNames:['Silver','Gold'],
+   vars:['RYAN_var48_0.png','RYAN_var48_1.jpeg']},
+  {coll:'Silk',     effect:'stone',varNames:['Ivory','Silver','Gold','Graphite'],
+   vars:['SILK_var50_0.jpeg','SILK_var50_1.jpeg','SILK_var50_2.jpeg','SILK_var50_3.jpeg']},
+  {coll:'Tesino',   effect:'marble',varNames:['Beige','Grey'],
+   vars:['TESINO_var27_0.jpeg','TESINO_var27_1.jpeg']},
+  // CAT24 EXCLUSIVE
+  {coll:'Space',     effect:'stone',cat24:true,heroFn:'CAT24_SPACE_hero.jpg',
+   varNames:['Grey','Dark Grey','Black','Anthracite','Light Grey','Silver','Graphite'],
+   vars:['CAT24_SPACE_v6_0.jpeg','CAT24_SPACE_v6_1.jpeg','CAT24_SPACE_v6_2.jpeg','CAT24_SPACE_v6_3.jpeg','CAT24_SPACE_v6_4.jpeg','CAT24_SPACE_v6_5.jpeg','CAT24_SPACE_v6_6.jpeg']},
+  {coll:'Carly-Gaby',effect:'decorative',cat24:true,heroFn:'CAT24_CARLY-GABY_hero.jpg',
+   varNames:['Grey','Beige','Mosaic','Interior'],
+   vars:['CAT24_CARLY-GABY_v10_0.jpeg','CAT24_CARLY-GABY_v10_1.jpeg','CAT24_CARLY-GABY_v10_2.jpeg','CAT24_CARLY-GABY_v10_3.jpeg']},
+  {coll:'Andromeda', effect:'decorative',cat24:true,heroFn:'CAT24_ANDROMEDA_hero.jpg',
+   varNames:['Grey','Beige','Diamond','Geometric'],
+   vars:['CAT24_ANDROMEDA_v14_0.jpeg','CAT24_ANDROMEDA_v14_1.jpeg','CAT24_ANDROMEDA_v14_2.jpeg','CAT24_ANDROMEDA_v14_3.jpeg']},
+  {coll:'Arsenal',   effect:'decorative',cat24:true,heroFn:'CAT24_ARSENAL_hero.jpg',
+   varNames:['Grey','Beige','Ribbed Grey','Ribbed Beige'],
+   vars:['CAT24_ARSENAL_v16_0.jpeg','CAT24_ARSENAL_v16_1.jpeg','CAT24_ARSENAL_v16_2.jpeg','CAT24_ARSENAL_v16_3.jpeg']},
+  {coll:'Rocks',     effect:'stone',cat24:true,heroFn:'CAT24_ROCKS_hero.jpg',
+   varNames:['Light Beige','Beige','Grey','Black','Brown'],
+   vars:['CAT24_ROCKS_v30_0.jpeg','CAT24_ROCKS_v30_1.jpeg','CAT24_ROCKS_v30_2.jpeg','CAT24_ROCKS_v30_3.jpeg','CAT24_ROCKS_v30_4.jpeg']},
+];
+
+const EXCL_TILES=EXCL_DEF.map(d=>({
+  coll:d.coll,
+  effect:d.effect,
+  cat24:!!d.cat24,
+  heroImg:exclUrl(d.heroFn||d.coll.toUpperCase()+'_hero.jpg'),
+  varImgs:d.vars.map(fn=>exclUrl(fn)),
+  varNames:d.varNames||[],
+  source:'excl',
+  size:'excl'
+}));
+
+// ── Cross-reference: which production tile colls appear in each exclusive render ──
+// Key = exclusive coll name, value = { variantIndex: ['ProdColl1','ProdColl2',...] }
+// Keys are "Collection ColorCode" matching t.coll+' '+t.col from clean()
+const RENDER_TAGS={};
+const TILE_RENDERS={};
+
+// ── Exclusive variant sizes (for showing in Collections tab) ──────────────────
+const EXCL_SIZES={
+  'Apollo':'60x120','Carbon':'60x120','Dexter':'60x60','Frost':'60x120',
+  'Industry':'60x120','Logan':'60x120','Midnight':'60x120','Rocket':'60x60',
+  'Solido':'60x60','Stucco':'60x120','Beli':'60x120','Crimson':'60x120',
+  'Dakar':'60x120','Frega':'60x60','Limestone':'60x120','Sierra':'60x120',
+  'Terrano':'60x120','Traver':'60x120','Bond':'60x120','Ferro':'60x60',
+  'Iron':'60x120','Meta':'60x120','Rusted':'60x60','Vinyl':'60x120',
+  'Blossom':'60x120','Essence':'60x120','Eternal':'60x120','Mantua':'60x120',
+  'Prestige':'60x60','Regal':'60x120','Ryan':'60x120','Silk':'60x120',
+  'Tesino':'60x120','Space':'60x120','Carly-Gaby':'60x60','Andromeda':'60x120',
+  'Arsenal':'60x120','Rocks':'60x120','Serenada':'60x120'
+};
+
+// Add exclusive variant texture images into PROD_TILES so they appear in Collections tab
+EXCL_TILES.forEach(t=>{
+  const sz=EXCL_SIZES[t.coll]||'60x120';
+  // Only colour variant textures (no hero render)
+  t.varImgs.forEach((src,i)=>{
+    const vname=t.varNames[i]||('Variant '+(i+1));
+    if(t.coll==='Industry'&&vname==='Mosaic Loft')return;
+    if(t.coll==='Arsenal'&&vname==='Grey')return;
+    if(t.coll==='Carly-Gaby'&&vname==='Interior')return;
+    if(t.coll==='Andromeda'&&vname==='Geometric')return;
+    const veff=(t.coll==='Industry'&&vname==='Grey')?'other':(t.effect||'other');
+    PROD_TILES.push({fn:t.coll+'_var'+i,size:sz,src,
+      col:'',cname:vname,coll:t.coll,fin:'',code:'',effect:veff,source:'excl_var'});
+  });
+});
+
+// ── Update header stats ───────────────────────────────────────────────────────
+document.getElementById('prodCount').textContent=PROD_TILES.filter(t=>t.source!=='excl_var').length;
+document.getElementById('exclCount').textContent=EXCL_TILES.length;
+
+// ── i18n ──────────────────────────────────────────────────────────────────────
+let lang='ru';
+const LANGS={
+  ru:{
+    hdr_eye:'Производитель керамогранита · Узбекистан',
+    hdr_contact:'Связаться с нами',
+    cert_btn:'Сертифицированный материал · 4 сертификата',
+    v2_pill:'Расширенное издание 2026',
+    brand_sub:'Производство и эксклюзивные коллекции',
+    stat_prod:'Плитки производства',stat_excl:'Эксклюзивные коллекции',stat_fmt:'Форматы',
+    hdr_tag:'Премиальный керамогранит для архитектуры и дизайна интерьера',
+    flbl:'Вид',tab_prod:'Коллекции',tab_excl:'Визуализация',sz_all:'Все размеры',
+    search_ph:'Поиск коллекций…',
+    porcelain:'керамогранит',tiles:'плиток',tile:'плитка',
+    excl_coll_title:'LUX Эксклюзивная коллекция',arch_renders:'архитектурные рендеры',
+    collections:'коллекций',collection:'коллекция',
+    no_results:'Нет результатов по вашему запросу.',
+    exclusive:'Эксклюзив',renders:'рендеров',render:'Рендер',
+    excl_coll:'Эксклюзивная коллекция',cat24_new_coll:'CAT 2024 · Новая коллекция',
+    collection_hash:'Коллекция #',
+    spec_format:'Формат',spec_color:'Цвет',spec_surface:'Поверхность',
+    spec_material:'Материал',spec_origin:'Производство',
+    spec_effect:'Эффект',spec_variants:'Вариантов',spec_category:'Категория',
+    natural:'Натуральная',porcelain_val:'Керамогранит',uzbekistan:'Узбекистан',
+    cat2024_excl:'CAT 2024 Эксклюзив',lux_excl:'LUX Эксклюзив',
+    lb_orig:'Узбекистан · Премиальный керамогранит',
+    eff_all:'Все',eff_other:'Цемент',eff_decorative:'Декор',
+    eff_concrete:'Бетон',eff_stone:'Камень',eff_metal:'Металл',eff_marble:'Мрамор',eff_wood:'Дерево',
+    cert_title:'Сертификаты качества',
+    cert_sub2:'LUX Ceramics · Сертифицированный керамогранит · Узбекистан',
+    csect_eye:'Свяжитесь с нами',csect_head:'Контакты NTEK',
+    ccard_wa_lbl:'WhatsApp',ccard_wa_sub:'Напишите нам в WhatsApp',ccard_wa_btn:'Написать нам',
+    ccard_ph_lbl:'Телефон',ccard_ph_sub:'Позвоните нам напрямую',ccard_ph_btn:'Позвонить',
+    ccard_ig_sub:'Проекты и новинки',ccard_ig_btn:'Подписаться',
+    ccard_adr_lbl:'Адрес офиса',ccard_adr_sub:'Бишкек, Кыргызстан',ccard_adr_btn:'Проложить маршрут',
+    ftr_desc:'NTEK — официальный дистрибьютор LUX Ceramics в Кыргызстане. Премиальный керамогранит для жилых и коммерческих проектов.',
+    ftr_lnk_txt:'Официальный сайт LUX Ceramics',ftr_col_hd:'Контакты',
+    ftr_cat_hd:'О каталоге',
+    ftr_cat_ed:'Расширенное издание · 2026',
+    ftr_cat_mfg:'Производство: Узбекистан',
+    ftr_cat_tech:'Технология: Digital Printing',
+    ftr_cat_sz1:'Формат 30×60 см',
+    ftr_cat_sz2:'Формат 60×60 см',
+    ftr_cat_sz3:'Формат 60×120 см',
+    ftr_cat_mat:'Глазурованный керамогранит',
+    ftr_cat_frost:'Морозостойкий · Ректифицированный',
+    flink_wa:'WhatsApp · +996 556 442 207',flink_ph:'Телефон · +996 777 420 000',
+    flink_ig:'Instagram · @ntek.kg',flink_addr:'Исанова 119, Бишкек — 2GIS',
+    fcopy1:'© 2026 NTEK. Все права защищены.',
+    fcopy2:'Каталог LUX Ceramics · Расширенное издание',
+  },
+  ky:{
+    hdr_eye:'Керамогранит өндүрүүчү · Өзбекстан',
+    hdr_contact:'Биз менен байланышуу',
+    cert_btn:'Сертификатталган материал · 4 сертификат',
+    v2_pill:'Кеңейтилген басылма 2026',
+    brand_sub:'Өндүрүш жана эксклюзивдүү коллекциялар',
+    stat_prod:'Өндүрүш плиткалары',stat_excl:'Эксклюзивдүү коллекциялар',stat_fmt:'Форматтар',
+    hdr_tag:'Архитектура жана интерьер дизайны үчүн премиум керамогранит',
+    flbl:'Көрүнүш',tab_prod:'Коллекциялар',tab_excl:'Визуализация',sz_all:'Бардык өлчөмдөр',
+    search_ph:'Коллекцияларды издөө…',
+    porcelain:'керамогранит',tiles:'плитка',tile:'плитка',
+    excl_coll_title:'LUX Эксклюзивдүү коллекция',arch_renders:'архитектуралык рендерлер',
+    collections:'коллекция',collection:'коллекция',
+    no_results:'Издөөңүзгө ылайык эч нерсе табылган жок.',
+    exclusive:'Эксклюзив',renders:'рендер',render:'Рендер',
+    excl_coll:'Эксклюзивдүү коллекция',cat24_new_coll:'CAT 2024 · Жаңы коллекция',
+    collection_hash:'Коллекция #',
+    spec_format:'Формат',spec_color:'Түс',spec_surface:'Бет',
+    spec_material:'Материал',spec_origin:'Өндүрүш',
+    spec_effect:'Эффект',spec_variants:'Варианттар',spec_category:'Категория',
+    natural:'Табигый',porcelain_val:'Керамогранит',uzbekistan:'Өзбекстан',
+    cat2024_excl:'CAT 2024 Эксклюзив',lux_excl:'LUX Эксклюзив',
+    lb_orig:'Өзбекстан · Премиум керамогранит',
+    eff_all:'Баары',eff_other:'Цемент',eff_decorative:'Декор',
+    eff_concrete:'Бетон',eff_stone:'Таш',eff_metal:'Металл',eff_marble:'Мрамор',eff_wood:'Жыгач',
+    cert_title:'Сапат сертификаттары',
+    cert_sub2:'LUX Ceramics · Сертификатталган керамогранит · Өзбекстан',
+    csect_eye:'Биз менен байланышыңыз',csect_head:'NTEK байланыштары',
+    ccard_wa_lbl:'WhatsApp',ccard_wa_sub:'WhatsApp аркылуу жазыңыз',ccard_wa_btn:'Жазуу',
+    ccard_ph_lbl:'Телефон',ccard_ph_sub:'Түздөн-түз чалыңыз',ccard_ph_btn:'Чалуу',
+    ccard_ig_sub:'Долбоорлор жана жаңылыктар',ccard_ig_btn:'Жазылуу',
+    ccard_adr_lbl:'Офистин дареги',ccard_adr_sub:'Бишкек, Кыргызстан',ccard_adr_btn:'Маршрут куруу',
+    ftr_desc:'NTEK — Кыргызстандагы LUX Ceramics\'тин расмий дистрибьютору. Тургун жана коммерциялык долбоорлор үчүн премиум керамогранит.',
+    ftr_lnk_txt:'LUX Ceramics\'тин расмий сайты',ftr_col_hd:'Байланыштар',
+    ftr_cat_hd:'Каталог жөнүндө',
+    ftr_cat_ed:'Кеңейтилген басылма · 2026',
+    ftr_cat_mfg:'Өндүрүш: Өзбекстан',
+    ftr_cat_tech:'Технология: Digital Printing',
+    ftr_cat_sz1:'Формат 30×60 см',
+    ftr_cat_sz2:'Формат 60×60 см',
+    ftr_cat_sz3:'Формат 60×120 см',
+    ftr_cat_mat:'Глазурланган керамогранит',
+    ftr_cat_frost:'Аязга чыдамдуу · Ректификацияланган',
+    flink_wa:'WhatsApp · +996 556 442 207',flink_ph:'Телефон · +996 777 420 000',
+    flink_ig:'Instagram · @ntek.kg',flink_addr:'Исанова 119, Бишкек — 2GIS',
+    fcopy1:'© 2026 NTEK. Бардык укуктар корголгон.',
+    fcopy2:'LUX Ceramics каталогу · Кеңейтилген басылма',
+  },
+  en:{
+    hdr_eye:'Porcelain Tile Manufacturer · Uzbekistan',
+    hdr_contact:'Contact Us',
+    cert_btn:'Certified Material · 4 Certificates',
+    v2_pill:'Extended Edition 2026',
+    brand_sub:'Production & Exclusive Collection',
+    stat_prod:'Production Tiles',stat_excl:'Exclusive Collections',stat_fmt:'Formats',
+    hdr_tag:'Premium porcelain tiles for architecture & interior design',
+    flbl:'View',tab_prod:'Collections',tab_excl:'Visualization',sz_all:'All Sizes',
+    search_ph:'Search collection…',
+    porcelain:'porcelain',tiles:'tiles',tile:'tile',
+    excl_coll_title:'LUX Exclusive Collection',arch_renders:'architectural renders',
+    collections:'collections',collection:'collection',
+    no_results:'No results match your search.',
+    exclusive:'Exclusive',renders:'renders',render:'Render',
+    excl_coll:'Exclusive Collection',cat24_new_coll:'CAT 2024 · New Collection',
+    collection_hash:'Collection #',
+    spec_format:'Format',spec_color:'Color',spec_surface:'Surface',
+    spec_material:'Material',spec_origin:'Origin',
+    spec_effect:'Effect',spec_variants:'Variants',spec_category:'Category',
+    natural:'Natural',porcelain_val:'Porcelain',uzbekistan:'Uzbekistan',
+    cat2024_excl:'CAT 2024 Exclusive',lux_excl:'LUX Exclusive',
+    lb_orig:'Uzbekistan · Premium Porcelain',
+    eff_all:'All',eff_other:'Cement',eff_decorative:'Decorative',
+    eff_concrete:'Concrete',eff_stone:'Stone',eff_metal:'Metal',eff_marble:'Marble',eff_wood:'Wood',
+    cert_title:'Quality Certificates',
+    cert_sub2:'LUX Ceramics · Certified Porcelain · Uzbekistan',
+    csect_eye:'Get in touch',csect_head:'NTEK Contacts',
+    ccard_wa_lbl:'WhatsApp',ccard_wa_sub:'Message us on WhatsApp',ccard_wa_btn:'Write to us',
+    ccard_ph_lbl:'Phone',ccard_ph_sub:'Call us directly',ccard_ph_btn:'Call us',
+    ccard_ig_sub:'Projects & new arrivals',ccard_ig_btn:'Subscribe',
+    ccard_adr_lbl:'Office Address',ccard_adr_sub:'Bishkek, Kyrgyzstan',ccard_adr_btn:'Get directions',
+    ftr_desc:'NTEK — official distributor of LUX Ceramics in Kyrgyzstan. Premium porcelain tiles for residential and commercial projects.',
+    ftr_lnk_txt:'Official LUX Ceramics website',ftr_col_hd:'Contacts',
+    ftr_cat_hd:'About the Catalogue',
+    ftr_cat_ed:'Extended Edition · 2026',
+    ftr_cat_mfg:'Manufactured in Uzbekistan',
+    ftr_cat_tech:'Technology: Digital Printing',
+    ftr_cat_sz1:'Format 30×60 cm',
+    ftr_cat_sz2:'Format 60×60 cm',
+    ftr_cat_sz3:'Format 60×120 cm',
+    ftr_cat_mat:'Glazed Porcelain Tile',
+    ftr_cat_frost:'Frost-Resistant · Rectified',
+    flink_wa:'WhatsApp · +996 556 442 207',flink_ph:'Phone · +996 777 420 000',
+    flink_ig:'Instagram · @ntek.kg',flink_addr:'Исанова 119, Bishkek — 2GIS',
+    fcopy1:'© 2026 NTEK. All rights reserved.',
+    fcopy2:'LUX Ceramics Catalogue · Extended Edition',
+  }
+};
+function T(k){return(LANGS[lang]||LANGS.ru)[k]||k;}
+function applyLang(l){
+  lang=l;
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=T(el.dataset.i18n));
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>el.placeholder=T(el.dataset.i18nPh));
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+}
+function setLang(l){applyLang(l);render();}
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let srcFilter='prod',szFilter='all',q='',effFilter='all';
+let ftiles=[],exFtiles=[],lbMode='prod',curIdx=0,curExIdx=0,curVarIdx=0;
+const SZL={'30x60':'30 × 60 cm','60x60':'60 × 60 cm','60x120':'60 × 120 cm'};
+const AR={'30x60':'ar30','60x60':'ar60','60x120':'ar120'};
+const GC={'30x60':'g30','60x60':'g60','60x120':'g120'};
+const EFF_CAP={concrete:'Бетон',stone:'Камень',metal:'Металл',marble:'Мрамор',wood:'Дерево'};
+
+
+function exclImgs(t){return[t.heroImg,...t.varImgs];}
+
+// ── Filter visibility ─────────────────────────────────────────────────────────
+function updateTabVis(){
+  const isProd=srcFilter==='prod';
+  document.getElementById('szTabs').style.display=isProd?'flex':'none';
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function render(){
+  const qq=q.toLowerCase();
+  const showProd=srcFilter!=='excl';
+  const showExcl=srcFilter!=='prod';
+
+  function matchEff(eff){
+    if(effFilter==='all')return true;
+    if(effFilter==='other')return eff!=='wood'&&eff!=='marble'&&eff!=='metal'&&eff!=='stone'&&eff!=='decorative';
+    return eff===effFilter;
+  }
+
+  ftiles=showProd?PROD_TILES.filter(t=>{
+    const ms=szFilter==='all'||t.size===szFilter;
+    const mq=!qq||t.coll.toLowerCase().includes(qq)||t.cname.toLowerCase().includes(qq);
+    return ms&&mq&&matchEff(t.effect||'other');
+  }):[];
+
+  exFtiles=showExcl?EXCL_TILES.filter(t=>{
+    const mq=!qq||t.coll.toLowerCase().includes(qq);
+    return mq&&matchEff(t.effect||'other');
+  }):[];
+
+  // Count display
+  let rcText='';
+  if(srcFilter==='prod'){
+    rcText=`${ftiles.length} ${T('tiles')}`;
+  }else{
+    rcText=`${exFtiles.length} ${T('collections')}`;
+  }
+  document.getElementById('rc').textContent=rcText;
+
+  const g=document.getElementById('gallery');
+  let html='';
+
+  // Production sections
+  if(ftiles.length){
+    const sizes=szFilter==='all'?['30x60','60x60','60x120']:[szFilter];
+    html+=sizes.map(sz=>{
+      const ts=ftiles.filter(t=>t.size===sz).sort((a,b)=>a.coll.localeCompare(b.coll)||a.cname.localeCompare(b.cname));
+      if(!ts.length)return'';
+      return`<section class="sg" data-sz="${sz}">
+        <div class="sg-hdr">
+          <h2 class="sg-t">${SZL[sz]}</h2>
+          <span class="sg-u">${T('porcelain')}</span>
+          <span class="sg-c">${ts.length} ${T('tiles')}</span>
+        </div>
+        <div class="tgrid ${GC[sz]}">
+          ${ts.map(t=>{const gi=ftiles.indexOf(t);return renderProdCard(t,gi);}).join('')}
+        </div>
+      </section>`;
+    }).join('');
+  }
+
+  // Exclusive section
+  if(exFtiles.length){
+    html+=`<section class="sg sg-excl">
+      <div class="sg-hdr">
+        <h2 class="sg-t">${T('excl_coll_title')}</h2>
+        <span class="sg-u">${T('arch_renders')}</span>
+        <span class="sg-c">${exFtiles.length} ${T('collections')}</span>
+      </div>
+      <div class="tgrid g-excl">
+        ${exFtiles.map((t,i)=>renderExclCard(t,i)).join('')}
+      </div>
+    </section>`;
+  }
+
+  if(!html){
+    html=`<div class="sg"><div class="empty"><p>${T('no_results')}</p></div></div>`;
+  }
+  g.innerHTML=html;
+}
+
+function renderProdCard(t,gi){
+  return`<article class="tc" tabindex="0" role="button"
+    aria-label="${t.coll}${t.cname?' – '+t.cname:''}"
+    onclick="openProdLb(${gi})" onkeydown="if(event.key==='Enter'||event.key===' ')openProdLb(${gi})">
+    <div class="ti-wrap ${AR[t.size]}">
+      <img class="ti" src="${t.src}" alt="${t.coll}${t.cname?' '+t.cname:''}" loading="lazy"
+        onerror="this.parentElement.style.background='#d6d3d0';this.style.display='none'">
+      <div class="tov" aria-hidden="true">
+        ${t.code?`<div class="ov-code">#${t.code}</div>`:''}
+        <div class="ov-name">${t.coll||t.fn.replace(/\.(jpg|jpeg|png)$/i,'')}</div>
+        <div class="ov-tags">
+          ${t.cname?`<span class="ot ot-c">${t.cname}</span>`:''}
+          <span class="ot ot-s">${t.size} cm</span>
+          ${t.fin?`<span class="ot ot-f">${t.fin}</span>`:''}
+        </div>
+      </div>
+    </div>
+    <div class="tlbl">
+      <div class="lbl-n" title="${t.coll}">${t.coll||'—'}</div>
+      <div class="lbl-tags">
+        ${t.cname?`<span class="lt lt-c">${t.cname}</span>`:''}
+        <span class="lt lt-s">${t.size}</span>
+        ${t.fin?`<span class="lt lt-f">${t.fin}</span>`:''}
+      </div>
+    </div>
+  </article>`;
+}
+
+function renderExclCard(t,i){
+  return`<article class="tc excl" tabindex="0" role="button"
+    aria-label="${t.coll} – LUX Exclusive"
+    onclick="openExclLb(${i})" onkeydown="if(event.key==='Enter'||event.key===' ')openExclLb(${i})">
+    <div class="ti-wrap ar-excl">
+      <img class="ti" src="${t.heroImg}" alt="${t.coll}" loading="lazy"
+        onerror="this.parentElement.style.background='#d6d3d0';this.style.display='none'">
+      <div class="tov" aria-hidden="true">
+        <div class="ov-name">${t.coll}</div>
+        <div class="ov-tags">
+          <span class="ot ot-s">${EFF_CAP[t.effect]||t.effect}</span>
+          ${t.cat24?'<span class="ot ot-c">CAT 2024</span>':''}
+        </div>
+      </div>
+      <div class="excl-tag">${T('exclusive')}</div>
+      ${t.cat24?'<div class="cat24-tag">CAT 2024</div>':''}
+      ${t.varImgs.length?`<div class="var-ct">${t.varImgs.length} ${T('renders')}</div>`:''}
+    </div>
+    <div class="tlbl">
+      <div class="lbl-n" title="${t.coll}">${t.coll}</div>
+      <div class="lbl-tags">
+        <span class="eff-pill ep-${t.effect}">${T('eff_'+t.effect)}</span>
+        <span class="lt lt-excl">${T('exclusive')}</span>
+      </div>
+    </div>
+  </article>`;
+}
+
+// ── Lightbox ──────────────────────────────────────────────────────────────────
+function openProdLb(idx){lbMode='prod';curIdx=idx;showProdLb(idx);document.getElementById('lb').classList.add('open');}
+function openExclLb(idx){lbMode='excl';curExIdx=idx;curVarIdx=0;showExclLb(idx,0);document.getElementById('lb').classList.add('open');}
+function closeLb(){document.getElementById('lb').classList.remove('open');}
+
+function showProdLb(idx){
+  const t=ftiles[idx];if(!t)return;curIdx=idx;
+  document.getElementById('lbImg').src=t.src;
+  document.getElementById('lbImg').alt=t.coll+' '+t.cname;
+  document.getElementById('lbEye').textContent=t.code?T('collection_hash')+t.code:'LUX Ceramics';
+  document.getElementById('lbCol').textContent=t.coll||'—';
+  document.getElementById('lbCn').textContent=t.cname||'';
+  document.getElementById('lbSpecs').innerHTML=[
+    [T('spec_format'),SZL[t.size]],[T('spec_color'),t.cname||'—'],
+    [T('spec_surface'),t.fin||T('natural')],[T('spec_material'),T('porcelain_val')],[T('spec_origin'),T('uzbekistan')]
+  ].map(([k,v])=>`<div class="sp"><span class="sp-k">${k}</span><span class="sp-v">${v}</span></div>`).join('');
+  const lv=document.getElementById('lbVars');lv.innerHTML='';lv.style.display='none';
+  document.getElementById('lbITiles').innerHTML='';
+  document.getElementById('lbXSect').style.display='none';
+}
+
+function showExclLb(eIdx,vIdx){
+  const t=exFtiles[eIdx];if(!t)return;curExIdx=eIdx;curVarIdx=vIdx;
+  const imgs=exclImgs(t);
+  document.getElementById('lbImg').src=imgs[vIdx]||t.heroImg;
+  document.getElementById('lbImg').alt=t.coll;
+  document.getElementById('lbEye').textContent='LUX Exclusive · '+T('eff_'+t.effect);
+  document.getElementById('lbCol').textContent=t.coll;
+  // vIdx 0 = hero render; vIdx 1+ = variants (varNames index vIdx-1)
+  const varLabel=vIdx>0&&t.varNames[vIdx-1]?t.coll+' '+t.varNames[vIdx-1]:'';
+  document.getElementById('lbCn').textContent=varLabel||(t.cat24?T('cat24_new_coll'):T('excl_coll'));
+  document.getElementById('lbSpecs').innerHTML=[
+    [T('spec_effect'),T('eff_'+t.effect)],
+    [T('spec_variants'),t.varImgs.length],
+    [T('spec_category'),t.cat24?T('cat2024_excl'):T('lux_excl')],
+    [T('spec_origin'),T('uzbekistan')]
+  ].map(([k,v])=>`<div class="sp"><span class="sp-k">${k}</span><span class="sp-v">${v}</span></div>`).join('');
+  const lv=document.getElementById('lbVars');
+  lv.style.display='flex';
+  lv.innerHTML=imgs.map((src,i)=>{
+    const name=i===0?T('render'):(t.varNames[i-1]||'');
+    return `<div class="lv-wrap" onclick="showExclLb(${eIdx},${i})">
+      <img class="lv${i===vIdx?' on':''}" src="${src}" alt="${name}" onerror="this.parentElement.style.display='none'">
+      ${name?`<span class="lv-name">${name}</span>`:''}
+    </div>`;
+  }).join('');
+  document.getElementById('lbXSect').style.display='none';
+  document.getElementById('lbITiles').innerHTML='';
+}
+
+function jumpToProdTile(fullName){
+  if(srcFilter!=='prod'){
+    srcFilter='prod';
+    document.getElementById('srcTabs').querySelectorAll('.tab').forEach(x=>{
+      x.classList.toggle('on',x.dataset.src==='prod');
+      x.setAttribute('aria-selected',x.dataset.src==='prod'?'true':'false');
+    });
+    updateTabVis();render();
+  }
+  let ti=ftiles.findIndex(t=>(t.coll+(t.col?' '+t.col:''))===fullName);
+  if(ti<0) ti=ftiles.findIndex(t=>t.coll===fullName.split(' ')[0]);
+  if(ti>=0) openProdLb(ti); else closeLb();
+}
+
+function jumpToExclRender(exColl,varIdx){
+  if(srcFilter!=='excl'){
+    srcFilter='excl';
+    document.getElementById('srcTabs').querySelectorAll('.tab').forEach(x=>{
+      x.classList.toggle('on',x.dataset.src==='excl');
+      x.setAttribute('aria-selected',x.dataset.src==='excl'?'true':'false');
+    });
+    updateTabVis();render();
+  }
+  const ei=exFtiles.findIndex(t=>t.coll===exColl);
+  if(ei>=0){openExclLb(ei);showExclLb(ei,varIdx);} else closeLb();
+}
+
+
+document.getElementById('lbX').onclick=closeLb;
+document.getElementById('lb').onclick=e=>{if(e.target===e.currentTarget)closeLb();};
+
+document.getElementById('lbPrev').onclick=()=>{
+  if(lbMode==='prod'){if(curIdx>0)showProdLb(curIdx-1);}
+  else{
+    if(curVarIdx>0)showExclLb(curExIdx,curVarIdx-1);
+    else if(curExIdx>0){const p=exFtiles[curExIdx-1];showExclLb(curExIdx-1,exclImgs(p).length-1);}
+  }
+};
+document.getElementById('lbNext').onclick=()=>{
+  if(lbMode==='prod'){if(curIdx<ftiles.length-1)showProdLb(curIdx+1);}
+  else{
+    const imgs=exclImgs(exFtiles[curExIdx]);
+    if(curVarIdx<imgs.length-1)showExclLb(curExIdx,curVarIdx+1);
+    else if(curExIdx<exFtiles.length-1)showExclLb(curExIdx+1,0);
+  }
+};
+
+document.addEventListener('keydown',e=>{
+  const lb=document.getElementById('lb');
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape'){closeLb();return;}
+  if(lbMode==='prod'){
+    if(e.key==='ArrowLeft'&&curIdx>0)showProdLb(curIdx-1);
+    if(e.key==='ArrowRight'&&curIdx<ftiles.length-1)showProdLb(curIdx+1);
+  }else{
+    const imgs=exclImgs(exFtiles[curExIdx]);
+    if(e.key==='ArrowLeft'){
+      if(curVarIdx>0)showExclLb(curExIdx,curVarIdx-1);
+      else if(curExIdx>0){const p=exFtiles[curExIdx-1];showExclLb(curExIdx-1,exclImgs(p).length-1);}
+    }
+    if(e.key==='ArrowRight'){
+      if(curVarIdx<imgs.length-1)showExclLb(curExIdx,curVarIdx+1);
+      else if(curExIdx<exFtiles.length-1)showExclLb(curExIdx+1,0);
+    }
+  }
+});
+
+// ── Filter tabs ───────────────────────────────────────────────────────────────
+document.getElementById('srcTabs').querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+  srcFilter=b.dataset.src;
+  effFilter='all';
+  document.getElementById('effTabs').querySelectorAll('.tab').forEach(x=>{
+    x.classList.toggle('on',x.dataset.eff==='all');x.setAttribute('aria-selected',x.dataset.eff==='all'?'true':'false');
+  });
+  document.getElementById('srcTabs').querySelectorAll('.tab').forEach(x=>{
+    x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b?'true':'false');
+  });
+  updateTabVis();render();
+});
+document.getElementById('szTabs').querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+  szFilter=b.dataset.sz;
+  document.getElementById('szTabs').querySelectorAll('.tab').forEach(x=>{
+    x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b?'true':'false');
+  });
+  render();
+});
+document.getElementById('effTabs').querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+  effFilter=b.dataset.eff;
+  document.getElementById('effTabs').querySelectorAll('.tab').forEach(x=>{
+    x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b?'true':'false');
+  });
+  render();
+});
+
+let st;
+document.getElementById('si').addEventListener('input',e=>{
+  clearTimeout(st);st=setTimeout(()=>{q=e.target.value.trim();render();},180);
+});
+
+applyLang('ru');
+render();
+
+// ── Certificates ──────────────────────────────────────────────────────────────
+const CERT_BASE='img/certs/';
+const CERTS=[
+  {file:'Сертификат соответствия 2025.pdf'},
+  {file:'RSC PERSEY LG.pdf'},
+  {file:'RC VENECIA LB.pdf'},
+  {file:'PACIFIC LG R_251010_170235.pdf'},
+];
+function certUrl(fn){return CERT_BASE+enc(fn)+'#toolbar=0&navpanes=0&view=FitH';}
+function openCerts(i){i=i==null?0:i;showCert(i);document.getElementById('certModal').classList.add('open');}
+function closeCerts(){
+  document.getElementById('certModal').classList.remove('open');
+  setTimeout(()=>{document.getElementById('certFrame').src='';},300);
+}
+function showCert(i){
+  document.querySelectorAll('.ctab').forEach((b,j)=>b.classList.toggle('on',j===i));
+  document.getElementById('certFrame').src=certUrl(CERTS[i].file);
+}
+document.getElementById('certX').onclick=closeCerts;
+document.getElementById('certModal').onclick=e=>{if(e.target===e.currentTarget)closeCerts();};
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&document.getElementById('certModal').classList.contains('open'))closeCerts();
+});
+</script>
+</body>
+</html>
