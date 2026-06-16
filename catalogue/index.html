@@ -15,8 +15,8 @@
   --ease:cubic-bezier(0.25,0.46,0.45,0.94);--r:3px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--f-b);background:var(--bg);color:var(--prim);min-height:100dvh;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--f-b);background:var(--bg);color:var(--prim);min-height:100dvh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 /* HEADER */
 .hdr{background:var(--prim);padding:52px 48px 44px;position:relative;overflow:hidden}
@@ -283,6 +283,11 @@ img.ccard-ico{margin-top:-10px;margin-bottom:32px}
   .hdr-tag{display:none}
   .hdr-right{gap:8px}
   .hdr-contact-btn{font-size:10px;padding:6px 14px}
+  .hdr-eye{letter-spacing:.1em;white-space:normal}
+  .brand-sub{letter-spacing:.1em;font-size:9px;white-space:normal}
+  .lux-wm{white-space:normal;text-align:center}
+  .cert-badge-btn{display:none}
+  .hdr-inner{overflow:hidden}
   /* Filter bar — each tab row on own line, scrollable */
   .fbar-in{
     flex-direction:column;align-items:stretch;gap:5px;
