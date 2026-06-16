@@ -349,6 +349,25 @@ img.ccard-ico{margin-top:-10px;margin-bottom:32px}
 }
 @media(prefers-reduced-motion:reduce){.tc,.ti,.tov,.lb,.lb-box{transition:none}}
 
+/* EXCLUSIVE badge on tile image in collections */
+.excl-tile-tag{position:absolute;top:10px;left:10px;background:var(--acc);color:#FFF;
+  font-size:8px;font-weight:600;letter-spacing:.12em;padding:2px 7px;
+  border-radius:2px;text-transform:uppercase;pointer-events:none;z-index:1}
+/* Lightbox exclusive badge */
+.lb-excl-badge{margin-top:6px;display:none}
+.lb-excl-badge.show{display:block}
+.lb-excl-badge span{font-size:8px;font-weight:600;letter-spacing:.12em;padding:2px 7px;
+  border-radius:2px;text-transform:uppercase;background:var(--acc);color:#FFF;display:inline-block}
+/* Basic / Exclusive kind filter */
+.pkbar{display:flex;justify-content:center;margin-bottom:28px}
+.pkb{padding:7px 22px;font-family:var(--f-b);font-size:10px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;background:var(--muted);border:1px solid var(--border);
+  cursor:pointer;color:var(--txt2);transition:background .18s,color .18s}
+.pkb:first-child{border-radius:var(--r) 0 0 var(--r);border-right:none}
+.pkb:last-child{border-radius:0 var(--r) var(--r) 0}
+.pkb.on{background:var(--prim);color:#FFF;border-color:var(--prim)}
+.pkb:hover:not(.on){background:var(--border);color:var(--prim)}
+
 /* CERTIFICATES */
 .cert-badge-btn{display:inline-flex;align-items:center;gap:7px;background:rgba(180,83,9,.12);
   border:1px solid rgba(180,83,9,.3);color:var(--acc2);font-family:var(--f-b);font-size:9px;
@@ -489,6 +508,7 @@ img.ccard-ico{margin-top:-10px;margin-bottom:32px}
         <div class="lb-eye" id="lbEye"></div>
         <div class="lb-col" id="lbCol"></div>
         <div class="lb-cname" id="lbCn"></div>
+        <div class="lb-excl-badge" id="lbExclBadge"><span>Exclusive</span></div>
         <div class="lb-rule"></div>
         <div class="lb-specs" id="lbSpecs"></div>
       </div>
@@ -962,7 +982,7 @@ const LANGS={
     brand_sub:'Производство и эксклюзивные коллекции',
     stat_prod:'Плитки производства',stat_excl:'Эксклюзивные коллекции',stat_fmt:'Форматы',
     hdr_tag:'Премиальный керамогранит для архитектуры и дизайна интерьера',
-    flbl:'Вид',tab_prod:'Коллекции',tab_excl:'Визуализация',sz_all:'Все размеры',
+    flbl:'Вид',tab_prod:'Коллекции',tab_excl:'Эксклюзив',sz_all:'Все размеры',pkb_basic:'Базовые',pkb_excl:'Эксклюзив',
     search_ph:'Поиск коллекций…',
     porcelain:'керамогранит',tiles:'плиток',tile:'плитка',
     excl_coll_title:'LUX Эксклюзивная коллекция',arch_renders:'архитектурные рендеры',
@@ -1010,7 +1030,7 @@ const LANGS={
     brand_sub:'Өндүрүш жана эксклюзивдүү коллекциялар',
     stat_prod:'Өндүрүш плиткалары',stat_excl:'Эксклюзивдүү коллекциялар',stat_fmt:'Форматтар',
     hdr_tag:'Архитектура жана интерьер дизайны үчүн премиум керамогранит',
-    flbl:'Көрүнүш',tab_prod:'Коллекциялар',tab_excl:'Визуализация',sz_all:'Бардык өлчөмдөр',
+    flbl:'Көрүнүш',tab_prod:'Коллекциялар',tab_excl:'Эксклюзив',sz_all:'Бардык өлчөмдөр',pkb_basic:'Базалык',pkb_excl:'Эксклюзив',
     search_ph:'Коллекцияларды издөө…',
     porcelain:'керамогранит',tiles:'плитка',tile:'плитка',
     excl_coll_title:'LUX Эксклюзивдүү коллекция',arch_renders:'архитектуралык рендерлер',
@@ -1058,7 +1078,7 @@ const LANGS={
     brand_sub:'Production & Exclusive Collection',
     stat_prod:'Production Tiles',stat_excl:'Exclusive Collections',stat_fmt:'Formats',
     hdr_tag:'Premium porcelain tiles for architecture & interior design',
-    flbl:'View',tab_prod:'Collections',tab_excl:'Visualization',sz_all:'All Sizes',
+    flbl:'View',tab_prod:'Collections',tab_excl:'Exclusive',sz_all:'All Sizes',pkb_basic:'Basic',pkb_excl:'Exclusive',
     search_ph:'Search collection…',
     porcelain:'porcelain',tiles:'tiles',tile:'tile',
     excl_coll_title:'LUX Exclusive Collection',arch_renders:'architectural renders',
@@ -1110,7 +1130,7 @@ function applyLang(l){
 function setLang(l){applyLang(l);render();}
 
 // ── State ─────────────────────────────────────────────────────────────────────
-let srcFilter='prod',szFilter='all',q='',effFilter='all';
+let srcFilter='prod',szFilter='all',q='',effFilter='all',prodKindFilter='basic';
 let ftiles=[],exFtiles=[],lbMode='prod',curIdx=0,curExIdx=0,curVarIdx=0;
 const SZL={'30x60':'30 × 60 cm','60x60':'60 × 60 cm','60x120':'60 × 120 cm'};
 const AR={'30x60':'ar30','60x60':'ar60','60x120':'ar120'};
@@ -1141,7 +1161,8 @@ function render(){
   ftiles=showProd?PROD_TILES.filter(t=>{
     const ms=szFilter==='all'||t.size===szFilter;
     const mq=!qq||t.coll.toLowerCase().includes(qq)||t.cname.toLowerCase().includes(qq);
-    return ms&&mq&&matchEff(t.effect||'other');
+    const mk=prodKindFilter==='basic'?(t.source==='prod'):(t.source==='excl_var');
+    return ms&&mq&&matchEff(t.effect||'other')&&mk;
   }):[];
 
   exFtiles=showExcl?EXCL_TILES.filter(t=>{
@@ -1162,6 +1183,12 @@ function render(){
   let html='';
 
   // Production sections
+  if(showProd){
+    html+=`<div class="pkbar">
+      <button class="pkb${prodKindFilter==='basic'?' on':''}" onclick="setProdKind('basic')">${T('pkb_basic')}</button>
+      <button class="pkb${prodKindFilter==='excl'?' on':''}" onclick="setProdKind('excl')">${T('pkb_excl')}</button>
+    </div>`;
+  }
   if(ftiles.length){
     const sizes=szFilter==='all'?['30x60','60x60','60x120']:[szFilter];
     html+=sizes.map(sz=>{
@@ -1207,6 +1234,7 @@ function renderProdCard(t,gi){
     <div class="ti-wrap ${AR[t.size]}">
       <img class="ti" src="${t.src}" alt="${t.coll}${t.cname?' '+t.cname:''}" loading="lazy"
         onerror="this.parentElement.style.background='#d6d3d0';this.style.display='none'">
+      ${t.source==='excl_var'?'<div class="excl-tile-tag">Exclusive</div>':''}
       <div class="tov" aria-hidden="true">
         ${t.code?`<div class="ov-code">#${t.code}</div>`:''}
         <div class="ov-name">${t.coll||t.fn.replace(/\.(jpg|jpeg|png)$/i,'')}</div>
@@ -1275,6 +1303,7 @@ function showProdLb(idx){
   const lv=document.getElementById('lbVars');lv.innerHTML='';lv.style.display='none';
   document.getElementById('lbITiles').innerHTML='';
   document.getElementById('lbXSect').style.display='none';
+  document.getElementById('lbExclBadge').className='lb-excl-badge'+(t.source==='excl_var'?' show':'');
 }
 
 function showExclLb(eIdx,vIdx){
@@ -1304,6 +1333,11 @@ function showExclLb(eIdx,vIdx){
   }).join('');
   document.getElementById('lbXSect').style.display='none';
   document.getElementById('lbITiles').innerHTML='';
+  document.getElementById('lbExclBadge').className='lb-excl-badge';
+}
+
+function setProdKind(k){
+  prodKindFilter=k;render();
 }
 
 function jumpToProdTile(fullName){
@@ -1376,7 +1410,7 @@ document.addEventListener('keydown',e=>{
 // ── Filter tabs ───────────────────────────────────────────────────────────────
 document.getElementById('srcTabs').querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
   srcFilter=b.dataset.src;
-  effFilter='all';
+  effFilter='all';prodKindFilter='basic';
   document.getElementById('effTabs').querySelectorAll('.tab').forEach(x=>{
     x.classList.toggle('on',x.dataset.eff==='all');x.setAttribute('aria-selected',x.dataset.eff==='all'?'true':'false');
   });
